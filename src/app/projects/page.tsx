@@ -1,239 +1,196 @@
-'use client';
+"use client";
 
-import { cn } from '@/components/cn';
-import LoadingSpinner from '@/components/LoadingSpinner';
-import ProjectCard from '@/components/ProjectCard';
-import ProjectsTable from '@/components/ProjectsTable';
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import { carbonProjects } from '../../../db';
+import { useMemo, useState, useEffect } from "react";
+import Link from "next/link";
 
-/**
- * TEMP: replace with real API call later
- */
-// async function getProjects(): Promise<Project[]> {
-//   return [
-//     {
-//       registry: 'verra',
-//       project_id: 'VCS_9921',
-//       name: 'Mangrove Restoration Project',
-//       country: 'Indonesia',
-//       status: 'failed',
-//       rating: 'AAA',
-//       score: 80,
-//       last_run_at: '2026-01-02',
-//     },
-//     {
-//       registry: 'gs',
-//       project_id: 'GS_884',
-//       name: 'Clean Cookstoves Initiative',
-//       country: 'India',
-//       status: 'running',
-//       rating: 'B',
-//       score: 70,
-//       last_run_at: '2026-01-05',
-//     },
-//     {
-//       registry: 'gs',
-//       project_id: 'GS_884',
-//       name: 'Clean Cookstoves Initiative',
-//       country: 'India',
-//       status: 'running',
-//       rating: 'C',
-//       score: 40,
-//       last_run_at: '2026-01-05',
-//     },
-//     {
-//       registry: 'verra',
-//       project_id: 'VCS_1566',
-//       name: 'Community Reforestation Program',
-//       country: 'Sri Lanka',
-//       status: 'completed',
-//       rating: 'D',
-//       score: 10,
-//       last_run_at: '2026-01-03',
-//     },
-//   ];
-// }
+type Tab = "verra" | "gs";
+
+type Row = {
+  id: string;
+  name: string;
+  status: string;
+  credits: number | null;
+};
+
+/* ===================== DATA EXTRACTION ===================== */
+
+function extractVerra(verraData: any): Row[] {
+  return Object.entries(verraData).map(([key, p]: any) => {
+    const attrs = p?.participationSummaries?.[0]?.attributes || [];
+
+    const get = (code: string) =>
+      attrs.find((a: any) => a.code === code)?.values?.[0]?.value;
+
+    return {
+      id: key,
+      name: p.resourceName || "—",
+      status: get("PROJECT_STATUS") || "—",
+      credits: Number(get("EST_ANNUAL_EMISSION_REDCT")) || null,
+    };
+  });
+}
+
+function extractGS(gsData: any): Row[] {
+  return Object.entries(gsData).map(([key, p]: any) => ({
+    id: key,
+    name: p.name || "—",
+    status: p.status || "—",
+    credits: p.estimated_annual_credits || null,
+  }));
+}
+
+/* ===================== STATUS STYLES ===================== */
+
+function getStatusStyle(status: string) {
+  const s = status.toLowerCase();
+
+  if (s.includes("registered"))
+    return "bg-emerald-50 text-emerald-700 ring-emerald-200";
+
+  if (s.includes("verify")) return "bg-amber-50 text-amber-700 ring-amber-200";
+
+  if (s.includes("approval"))
+    return "bg-indigo-50 text-indigo-700 ring-indigo-200";
+
+  return "bg-slate-100 text-slate-600 ring-slate-200";
+}
 
 function StatusBadge({ status }: { status: string }) {
-  const map: Record<string, string> = {
-    completed: 'bg-emerald-50 text-emerald-700 ring-emerald-100',
-    running: 'bg-indigo-50 text-indigo-700 ring-indigo-100',
-    failed: 'bg-rose-50 text-rose-700 ring-rose-100',
-  };
-
   return (
     <span
-      className={`inline-flex rounded-full px-2.5 py-1 text-xs font-extrabold uppercase ring-1 ${map[status]}`}
+      className={`text-[11px] font-bold px-2.5 py-1 rounded-full ring-1 ${getStatusStyle(
+        status,
+      )}`}
     >
       {status}
     </span>
   );
 }
 
+/* ===================== PAGE ===================== */
+
 export default function ProjectsPage() {
-  const [projects, setProjects] = useState<Project[]>([]);
+  const [tab, setTab] = useState<Tab>("verra");
+  const [search, setSearch] = useState("");
+  const [statusFilter, setStatusFilter] = useState("");
+
+  const [verra, setVerra] = useState<Row[]>([]);
+  const [gs, setGS] = useState<Row[]>([]);
   const [loading, setLoading] = useState(true);
 
+  /* ===================== FETCH DATA ===================== */
   useEffect(() => {
-    async function fetchProjects() {
-      setLoading(true);
-      // const data = await getProjects();
-      const projectsData = carbonProjects;
-      setProjects(projectsData);
-      setLoading(false);
+    async function loadData() {
+      try {
+        const [verraRes, gsRes] = await Promise.all([
+          fetch("/Forestry/verra_projects.json"),
+          fetch("/Forestry/goldstandard_projects.json"),
+        ]);
+
+        const verraJson = await verraRes.json();
+        const gsJson = await gsRes.json();
+
+        setVerra(extractVerra(verraJson));
+        setGS(extractGS(gsJson));
+      } catch (err) {
+        console.error("Failed to load data:", err);
+      } finally {
+        setLoading(false);
+      }
     }
 
-    fetchProjects();
+    loadData();
   }, []);
 
-  function handleSelectProject(projectId: string) {}
+  const data = tab === "verra" ? verra : gs;
 
-  const headerSubtitle = 'Explore all carbon credit ratings world-wide.';
+  /* UNIQUE STATUSES */
+  const statuses = useMemo(() => {
+    const s = new Set<string>();
+    data.forEach((p) => {
+      if (p.status && p.status !== "—") s.add(p.status);
+    });
+    return Array.from(s);
+  }, [data]);
+
+  /* FILTER */
+  const filtered = useMemo(() => {
+    const q = search.toLowerCase().trim();
+
+    return data.filter((p) => {
+      if (statusFilter && p.status !== statusFilter) return false;
+
+      if (!q) return true;
+
+      return p.name.toLowerCase().includes(q) || p.id.toLowerCase().includes(q);
+    });
+  }, [data, search, statusFilter]);
+
+  /* ===================== UI ===================== */
+
+  if (loading) {
+    return (
+      <div className="p-10 text-center text-slate-500">Loading projects...</div>
+    );
+  }
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-50 via-white to-indigo-50 text-slate-900">
-      <div className="pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full bg-emerald-200/40 blur-3xl" />
-      <div className="pointer-events-none absolute top-40 -right-24 h-72 w-72 rounded-full bg-indigo-200/40 blur-3xl" />
-      <div className="pointer-events-none absolute bottom-0 left-1/3 h-80 w-80 rounded-full bg-sky-200/30 blur-3xl" />
-      <div className="mx-auto max-w-7xl px-4 py-10">
-        <div className="flex flex-col gap-3 rounded-3xl border border-white/60 bg-white/70 p-6 shadow-[0_10px_30px_-18px_rgba(15,23,42,0.25)] backdrop-blur">
-          <div className="flex flex-wrap items-start justify-between gap-4">
-            <div>
-              <h1 className="mt-3 text-3xl font-extrabold tracking-tight">
-                Projects List
-              </h1>
-              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-600">
-                {headerSubtitle}
-              </p>
-            </div>
-
-            <div className="flex items-center gap-2">
-              {/* <StatusPill
-                      status={
-                        job?.status === 'failed'
-                          ? 'failed'
-                          : job?.status === 'completed'
-                          ? 'completed'
-                          : loading
-                          ? 'running'
-                          : 'pending'
-                      }
-                    /> */}
-              {/* <div className="rounded-2xl border bg-white px-3 py-2 text-xs text-slate-600 shadow-sm">
-                <div className="font-bold text-slate-900">API</div>
-                <div className="font-mono">{API_BASE}</div>
-              </div> */}
-            </div>
+    <main className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-indigo-50 px-6 py-10">
+      <div className="max-w-6xl mx-auto">
+        {/* HEADER */}
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <h1 className="text-3xl font-extrabold tracking-tight bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+              Projects
+            </h1>
+            <p className="text-sm text-slate-500 mt-1">
+              Explore carbon credit projects across registries
+            </p>
           </div>
 
-          <section className="rounded-3xl border border-slate-300 bg-white/70 p-5 shadow-sm backdrop-blur">
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {/* Country (single) */}
-              <label className="rounded-2xl border border-slate-300 bg-white/70 p-3 shadow-sm">
-                <div className="text-xs font-bold text-slate-700">Country</div>
-                <select className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-semibold outline-none transition focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100">
-                  <option value="">All countries</option>
-                  <option value="Sri Lanka">Sri Lanka</option>
-                  <option value="India">India</option>
-                  <option value="Indonesia">Indonesia</option>
-                </select>
-              </label>
-
-              {/* Status (single) */}
-              <label className="rounded-2xl border border-slate-300 bg-white/70 p-3 shadow-sm">
-                <div className="text-xs font-bold text-slate-700">Status</div>
-                <select className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-semibold outline-none transition focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100">
-                  <option value="">All statuses</option>
-                  <option value="completed">Completed</option>
-                  <option value="running">Running</option>
-                  <option value="failed">Failed</option>
-                </select>
-              </label>
-
-              {/* Registry (multi) */}
-              <div className="rounded-2xl border border-slate-300 bg-white/70 p-3 shadow-sm">
-                <div className="text-xs font-bold text-slate-700 mb-2">
-                  Registry
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {['verra', 'gs'].map((r) => (
-                    <button
-                      key={r}
-                      type="button"
-                      className="rounded-full border border-slate-200 px-3 py-1 text-xs font-extrabold text-slate-600 transition hover:bg-slate-100"
-                    >
-                      {r.toUpperCase()}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Multi-select row */}
-            <div className="mt-4 grid gap-4 md:grid-cols-2">
-              {/* Project type (multi) */}
-              <div className="rounded-2xl border border-slate-300 bg-white/70 p-3 shadow-sm">
-                <div className="text-xs font-bold text-slate-700 mb-2">
-                  Project Type
-                </div>
-                <div className="flex flex-wrap gap-2 ">
-                  {[
-                    'Reforestation',
-                    'Renewable Energy',
-                    'Cookstoves',
-                    'Waste',
-                  ].map((type) => (
-                    <button
-                      key={type}
-                      type="button"
-                      className="rounded-full border border-slate-200 px-3 py-1 text-xs font-extrabold text-slate-600 transition hover:bg-slate-100"
-                    >
-                      {type}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Project ID search */}
-              <label className="rounded-2xl border border-slate-300 bg-white/70 p-3 shadow-sm">
-                <div className="text-xs font-bold text-slate-700">
-                  Project ID
-                </div>
-                <input
-                  placeholder="VCS_1566 or GS_884"
-                  className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-semibold outline-none transition placeholder:text-slate-400 focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100"
-                />
-              </label>
-            </div>
-
-            {/* Sort + actions */}
-            <div className="mt-4 flex flex-wrap items-center justify-end gap-3">
-              {/* Sort */}
-              {/* <label className="flex items-center gap-2 text-xs font-bold text-slate-700">
-                Sort by
-                <select className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs font-semibold outline-none focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100">
-                  <option value="last_run_desc">Last run (newest)</option>
-                  <option value="last_run_asc">Last run (oldest)</option>
-                  <option value="name_asc">Project name (A–Z)</option>
-                  <option value="name_desc">Project name (Z–A)</option>
-                </select>
-              </label> */}
-
-              {/* Actions */}
-              <div className="flex gap-2">
-                <button className="rounded-xl border px-4 py-2 text-xs font-extrabold text-slate-600 hover:bg-slate-100">
-                  Reset
-                </button>
-                <button className="rounded-xl bg-indigo-600 px-4 py-2 text-xs font-extrabold text-white shadow-sm hover:brightness-110">
-                  Apply filters
-                </button>
-              </div>
-            </div>
-          </section>
-          {loading ? <LoadingSpinner /> : <ProjectsTable projects={projects} />}
+          {/* SWITCH */}
+          <div className="flex bg-white/70 border rounded-xl p-1">
+            {["verra", "gs"].map((t) => (
+              <button
+                key={t}
+                onClick={() => {
+                  setTab(t as Tab);
+                  setSearch("");
+                  setStatusFilter("");
+                }}
+                className={`px-4 py-1.5 text-sm font-bold rounded-lg ${
+                  tab === t ? "bg-indigo-600 text-white" : "text-slate-500"
+                }`}
+              >
+                {t.toUpperCase()}
+              </button>
+            ))}
+          </div>
         </div>
+
+        {/* LIST */}
+        <div className="border rounded-xl overflow-hidden">
+          <div className="divide-y">
+            {filtered.map((p) => (
+              <Link key={p.id} href={`/verra/${p.id}`}>
+                <div className="grid grid-cols-4 p-4 hover:bg-indigo-50 cursor-pointer">
+                  <div>{p.id}</div>
+                  <div>{p.name}</div>
+                  <div>
+                    <StatusBadge status={p.status} />
+                  </div>
+                  <div className="text-right">
+                    {p.credits ? p.credits.toLocaleString() : "—"}
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {filtered.length === 0 && (
+          <div className="text-center py-10">No projects found</div>
+        )}
       </div>
     </main>
   );

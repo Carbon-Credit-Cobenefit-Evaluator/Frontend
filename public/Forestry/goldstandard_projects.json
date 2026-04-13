@@ -1,0 +1,1157 @@
+{
+  "GS_10220": {
+    "error": "Status 404"
+  },
+  "GS_11154": {
+    "error": "Status 404"
+  },
+  "GS_11899": {
+    "error": "Status 404"
+  },
+  "GS_2913": {
+    "id": "2913",
+    "created_at": "2020-12-19T06:55:03Z",
+    "updated_at": "2026-03-20T11:13:57Z",
+    "name": "GS1340 - Efficient cookstoves in Burkina Faso \u2013 tiipaalga F3PA cookstoves in Center-South Protected Areas - VPA-20",
+    "description": "The continuous degradation of natural resources (soil, vegetation, water resources, etc.) in the Center-South region of Burkina Faso leads to an increase in household poverty and food insecurity. Based on its experience and achievements with the improved three-stone cookstoves, tiipaalga is aiming to promote the distribution of the F3PA or the 3 stones improved cookstoves around the Center-South Protected Areas. \r\nThis micro-scale VPA is part of a group of 7 VPA\u2019s aiming to contribute to mitigating the effects of climate change and reduce poverty among rural households by promoting the use of the F3PA improved cookstoves in two (02) rural municipalities in Nahouri province and in five (05) rural municipalities in Zoundw\u00e9ogo province in the Center-South region. The F3PA wood stoves will replace the traditional open air three stone cooking method whilst respecting the local three stone cooking culture.",
+    "status": "GOLD_STANDARD_CERTIFIED_PROJECT",
+    "gsf_standards_version": "Gold Standard for the Global Goals",
+    "estimated_annual_credits": 9700,
+    "crediting_period_start_date": "2021-04-14",
+    "crediting_period_end_date": "2031-04-13",
+    "methodology": null,
+    "type": "Energy Efficiency - Domestic",
+    "size": "Micro Scale",
+    "sustaincert_id": 10924,
+    "sustaincert_url": "https://assurance-platform.goldstandard.org/project-documents/GS10924",
+    "project_developer": "Tiipaalga",
+    "country": "Burkina Faso",
+    "country_code": "BF",
+    "latitude": null,
+    "longitude": null,
+    "state": null,
+    "carbon_stream": "GS_VER",
+    "programme_of_activities": "VPA",
+    "crediting_periods": "[{\"id\":1,\"start_date\":\"2021-04-14\",\"end_date\":\"2031-04-13\",\"methodologies\":[{\"id\":174,\"description\":\"GS MS Simplified Methodology for Efficient Cookstoves v1.\",\"version\":1.1}]}]",
+    "poa_project_id": 1431,
+    "poa_project_sustaincert_id": 1340,
+    "sustainable_development_goals": [
+      {
+        "name": "Goal 7: Affordable and Clean Energy",
+        "issuable_products": []
+      },
+      {
+        "name": "Goal 13: Climate Action",
+        "issuable_products": [
+          {
+            "name": "Verified Emission Reduction",
+            "abbreviation": "VER"
+          },
+          {
+            "name": "Certified Emission Reduction",
+            "abbreviation": "CER"
+          },
+          {
+            "name": "Renewable Energy Certificate",
+            "abbreviation": "REC"
+          },
+          {
+            "name": "Planned Emission Reduction",
+            "abbreviation": "PER"
+          }
+        ]
+      },
+      {
+        "name": "Goal 3: Good Health and Well-Being",
+        "issuable_products": [
+          {
+            "name": "Averted Disability Adjusted Life Year",
+            "abbreviation": "ADALY"
+          }
+        ]
+      },
+      {
+        "name": "Goal 1: No Poverty",
+        "issuable_products": [
+          {
+            "name": "Verified Emission Reduction",
+            "abbreviation": "VER"
+          }
+        ]
+      },
+      {
+        "name": "Goal 5: Gender Equality",
+        "issuable_products": []
+      },
+      {
+        "name": "Goal 4: Quality Education",
+        "issuable_products": []
+      },
+      {
+        "name": "Goal 15: Life On Land",
+        "issuable_products": []
+      }
+    ],
+    "has_corsia_eligible_credits": false,
+    "labels": [
+      "EMISSION_REDUCTION"
+    ]
+  },
+  "GS_2940": {
+    "id": "2940",
+    "created_at": "2021-01-14T06:42:57Z",
+    "updated_at": "2025-12-20T12:11:17Z",
+    "name": "Improved Cooking Stoves in Bangladesh \u2013 CPA No.18 \u201cSZ Consultancy Services Ltd.\u201d",
+    "description": "The purpose of this small scale Programme of Activities (\u201cSSC-CPA\u201d) is the dissemination of efficient cooking stoves in Bangladesh. The Programme will promote two broad categories of Improved Cooking Stoves (\u201cICS\u201d): \u2022 Domestic biomass-burning stoves \u2022 Non-domestic biomass-burning stoves ICSs disseminated under this CPA are more efficient in transferring heat from the fuel to the pot than the so called traditional stoves. During the course of the CPA, the goal of the CPA is to transform the kitchens of households in Bangladesh through the sale and distribution of ICS. The ICS will have multiple benefits of reducing global greenhouse gas emissions, reducing pressure on forests and woody biomass resources, and also reducing indoor air pollution associated with use of traditional stoves.",
+    "status": "GOLD_STANDARD_CERTIFIED_PROJECT",
+    "gsf_standards_version": "Gold Standard for the Global Goals",
+    "estimated_annual_credits": 50000,
+    "crediting_period_start_date": "2016-01-13",
+    "crediting_period_end_date": "2026-01-12",
+    "methodology": "AMS-II.G. Energy Efficiency Measures in Thermal Applications of Non-Renewable Biomass",
+    "type": "Energy Efficiency - Domestic",
+    "size": "Small Scale",
+    "sustaincert_id": 10981,
+    "sustaincert_url": "https://assurance-platform.goldstandard.org/project-documents/GS10981",
+    "project_developer": "Bangladesh Bondhu Foundation",
+    "country": "Bangladesh",
+    "country_code": "BD",
+    "latitude": null,
+    "longitude": null,
+    "state": null,
+    "carbon_stream": "GS_CER",
+    "programme_of_activities": "VPA",
+    "crediting_periods": null,
+    "poa_project_id": 2822,
+    "poa_project_sustaincert_id": 10833,
+    "sustainable_development_goals": [
+      {
+        "name": "Goal 3: Good Health and Well-Being",
+        "issuable_products": [
+          {
+            "name": "Averted Disability Adjusted Life Year",
+            "abbreviation": "ADALY"
+          }
+        ]
+      },
+      {
+        "name": "Goal 15: Life On Land",
+        "issuable_products": []
+      },
+      {
+        "name": "Goal 1: No Poverty",
+        "issuable_products": [
+          {
+            "name": "Verified Emission Reduction",
+            "abbreviation": "VER"
+          }
+        ]
+      },
+      {
+        "name": "Goal 12: Responsible Production and Consumption",
+        "issuable_products": []
+      },
+      {
+        "name": "Goal 8: Decent Work and Economic Growth",
+        "issuable_products": []
+      },
+      {
+        "name": "Goal 5: Gender Equality",
+        "issuable_products": []
+      },
+      {
+        "name": "Goal 7: Affordable and Clean Energy",
+        "issuable_products": []
+      },
+      {
+        "name": "Goal 13: Climate Action",
+        "issuable_products": [
+          {
+            "name": "Verified Emission Reduction",
+            "abbreviation": "VER"
+          },
+          {
+            "name": "Certified Emission Reduction",
+            "abbreviation": "CER"
+          },
+          {
+            "name": "Renewable Energy Certificate",
+            "abbreviation": "REC"
+          },
+          {
+            "name": "Planned Emission Reduction",
+            "abbreviation": "PER"
+          }
+        ]
+      }
+    ],
+    "has_corsia_eligible_credits": false,
+    "labels": [
+      "EMISSION_REDUCTION"
+    ]
+  },
+  "GS_2951": {
+    "id": "2951",
+    "created_at": "2021-01-29T09:04:54Z",
+    "updated_at": "2025-12-29T10:51:41Z",
+    "name": "GS5047 VPA61 African Improved Cookstoves and Clean Water Programme: Ibanda \u2013 Makera Forest Cook Stove Project VI",
+    "description": "This Micro-Scale Voluntary Project Activity under the PoA African Improved Cookstoves and Clean Water Programme involves the distribution of domestic fuel-efficient cook stoves to households close to the Makera Natural Forest in Rwanda. The efficient cook stoves are locally produced. They will be distributed for free to users (only material for fixing the stove in the kitchen will be required as in-kind contribution), in exchange for the rights to the Voluntary Emission Reductions (VERs). The majority of families would not otherwise have access to the market for fuel-efficient cook stoves for economic reasons.",
+    "status": "GOLD_STANDARD_CERTIFIED_PROJECT",
+    "gsf_standards_version": "Gold Standard for the Global Goals",
+    "estimated_annual_credits": 8802,
+    "crediting_period_start_date": "2022-02-08",
+    "crediting_period_end_date": "2029-02-07",
+    "methodology": null,
+    "type": "Energy Efficiency - Domestic",
+    "size": "Micro Scale",
+    "sustaincert_id": 10992,
+    "sustaincert_url": "https://assurance-platform.goldstandard.org/project-documents/GS10992",
+    "project_developer": "Likano Project Development GmbH",
+    "country": "Rwanda",
+    "country_code": "RW",
+    "latitude": null,
+    "longitude": null,
+    "state": null,
+    "carbon_stream": "GS_VER",
+    "programme_of_activities": "VPA",
+    "crediting_periods": null,
+    "poa_project_id": 892,
+    "poa_project_sustaincert_id": 5047,
+    "sustainable_development_goals": [
+      {
+        "name": "Goal 3: Good Health and Well-Being",
+        "issuable_products": [
+          {
+            "name": "Averted Disability Adjusted Life Year",
+            "abbreviation": "ADALY"
+          }
+        ]
+      },
+      {
+        "name": "Goal 7: Affordable and Clean Energy",
+        "issuable_products": []
+      },
+      {
+        "name": "Goal 13: Climate Action",
+        "issuable_products": [
+          {
+            "name": "Verified Emission Reduction",
+            "abbreviation": "VER"
+          },
+          {
+            "name": "Certified Emission Reduction",
+            "abbreviation": "CER"
+          },
+          {
+            "name": "Renewable Energy Certificate",
+            "abbreviation": "REC"
+          },
+          {
+            "name": "Planned Emission Reduction",
+            "abbreviation": "PER"
+          }
+        ]
+      }
+    ],
+    "has_corsia_eligible_credits": false,
+    "labels": [
+      "EMISSION_REDUCTION"
+    ]
+  },
+  "GS_2990": {
+    "error": "Status 404"
+  },
+  "GS_3007": {
+    "error": "Status 404"
+  },
+  "GS_3025": {
+    "error": "Status 404"
+  },
+  "GS_3031": {
+    "id": "3031",
+    "created_at": "2021-02-11T17:09:08Z",
+    "updated_at": "2026-02-18T11:24:37Z",
+    "name": "GS5658 VPA 36: \u201cAccess to energy for local development and resilience building in Uganda\u201d",
+    "description": "The micro-scale Voluntary Project Activity (VPA) is planning the distribute fuel-efficient cookstoves in Northern and Eastern Uganda. Most families in Uganda cook with traditional inefficient cookstoves that consume large amounts of wood-based fuels (firewood or charcoal). This project is targeting the urban and peri-urban context of Northern and Eastern Regions of Uganda, where families tend to use charcoal as the main cooking fuel despite the fact that the price of charcoal has increased over time. The production of charcoal is increasing the rate of deforestation and land degradation, and their combustion is a significant source of greenhouse gas (GHG) emissions responsible for climate change. In addition to the environmental consequences, there are serious health implications related with the inefficient cooking methods through the exposure on the smoke and other emissions. The project will address the challenges above by reducing the consume of charcoal during the cooking activities. Besides reducing greenhouse gas emission and contributing to climate change mitigation in line with the UN\u2019s Sustainable Development Goal number 13 (\u201cClimate Action\u201d), the project activities are foreseen to contribute also other sustainable development goals.",
+    "status": "GOLD_STANDARD_CERTIFIED_PROJECT",
+    "gsf_standards_version": "Gold Standard for the Global Goals",
+    "estimated_annual_credits": 7568,
+    "crediting_period_start_date": "2022-03-06",
+    "crediting_period_end_date": "2027-03-05",
+    "methodology": "GS TPDDTEC v3.1",
+    "type": "Energy Efficiency - Domestic",
+    "size": "Micro Scale",
+    "sustaincert_id": 11043,
+    "sustaincert_url": "https://assurance-platform.goldstandard.org/project-documents/GS11043",
+    "project_developer": "Carbonsink (Carbonsink Group S.r.l.)",
+    "country": "Uganda",
+    "country_code": "UG",
+    "latitude": null,
+    "longitude": null,
+    "state": null,
+    "carbon_stream": "GS_VER",
+    "programme_of_activities": "VPA",
+    "crediting_periods": null,
+    "poa_project_id": 1019,
+    "poa_project_sustaincert_id": 5658,
+    "sustainable_development_goals": [
+      {
+        "name": "Goal 7: Affordable and Clean Energy",
+        "issuable_products": []
+      },
+      {
+        "name": "Goal 13: Climate Action",
+        "issuable_products": [
+          {
+            "name": "Verified Emission Reduction",
+            "abbreviation": "VER"
+          },
+          {
+            "name": "Certified Emission Reduction",
+            "abbreviation": "CER"
+          },
+          {
+            "name": "Renewable Energy Certificate",
+            "abbreviation": "REC"
+          },
+          {
+            "name": "Planned Emission Reduction",
+            "abbreviation": "PER"
+          }
+        ]
+      },
+      {
+        "name": "Goal 3: Good Health and Well-Being",
+        "issuable_products": [
+          {
+            "name": "Averted Disability Adjusted Life Year",
+            "abbreviation": "ADALY"
+          }
+        ]
+      },
+      {
+        "name": "Goal 1: No Poverty",
+        "issuable_products": [
+          {
+            "name": "Verified Emission Reduction",
+            "abbreviation": "VER"
+          }
+        ]
+      },
+      {
+        "name": "Goal 15: Life On Land",
+        "issuable_products": []
+      }
+    ],
+    "has_corsia_eligible_credits": false,
+    "labels": [
+      "EMISSION_REDUCTION"
+    ]
+  },
+  "GS_3039": {
+    "id": "3039",
+    "created_at": "2021-02-18T16:04:31Z",
+    "updated_at": "2025-12-23T03:05:35Z",
+    "name": "GS1247 VPA 271 - Burkina Faso Safe Water",
+    "description": "This project will support the provision of safe water to hundreds of households across Nord Region of Burkina Faso using borehole technology. By providing safe water, the project will ensure that households consume less firewood during the process of water purification and as a result there shall be a reduction of carbon dioxide from the combustion process.",
+    "status": "GOLD_STANDARD_CERTIFIED_PROJECT",
+    "gsf_standards_version": "Gold Standard for the Global Goals",
+    "estimated_annual_credits": 10000,
+    "crediting_period_start_date": "2021-02-19",
+    "crediting_period_end_date": "2026-02-18",
+    "methodology": "GS TPDDTEC v3.1",
+    "type": "Energy Efficiency - Domestic",
+    "size": "Micro Scale",
+    "sustaincert_id": 11051,
+    "sustaincert_url": "https://assurance-platform.goldstandard.org/project-documents/GS11051",
+    "project_developer": "CO2balance UK ltd",
+    "country": "Burkina Faso",
+    "country_code": "BF",
+    "latitude": null,
+    "longitude": null,
+    "state": null,
+    "carbon_stream": "GS_VER",
+    "programme_of_activities": "VPA",
+    "crediting_periods": null,
+    "poa_project_id": 155,
+    "poa_project_sustaincert_id": 1247,
+    "sustainable_development_goals": [
+      {
+        "name": "Goal 3: Good Health and Well-Being",
+        "issuable_products": [
+          {
+            "name": "Averted Disability Adjusted Life Year",
+            "abbreviation": "ADALY"
+          }
+        ]
+      },
+      {
+        "name": "Goal 6: Clean Water and Sanitation",
+        "issuable_products": [
+          {
+            "name": "Water Benefit Certificate",
+            "abbreviation": "WBC"
+          }
+        ]
+      },
+      {
+        "name": "Goal 5: Gender Equality",
+        "issuable_products": []
+      },
+      {
+        "name": "Goal 13: Climate Action",
+        "issuable_products": [
+          {
+            "name": "Verified Emission Reduction",
+            "abbreviation": "VER"
+          },
+          {
+            "name": "Certified Emission Reduction",
+            "abbreviation": "CER"
+          },
+          {
+            "name": "Renewable Energy Certificate",
+            "abbreviation": "REC"
+          },
+          {
+            "name": "Planned Emission Reduction",
+            "abbreviation": "PER"
+          }
+        ]
+      }
+    ],
+    "has_corsia_eligible_credits": false,
+    "labels": [
+      "EMISSION_REDUCTION"
+    ]
+  },
+  "GS_3260": {
+    "error": "Status 404"
+  },
+  "GS_3343": {
+    "id": "3343",
+    "created_at": "2021-08-16T10:58:35Z",
+    "updated_at": "2026-02-03T20:54:26Z",
+    "name": "UpEnergy-Social and Climate Impact Programme- Cooking Devices VPA-13",
+    "description": "UpEnergy Group will work with micro-entrepreneurs, NGOs, financial institutions, local distribution partners, etc. to provide residential/institution users with clean cooking technologies. UpEnergy would ensure the last-mile distribution/installation of the energy-efficient/clean energy technologies to the beneficiaries. This VPA is implemented in host country-DRC.",
+    "status": "GOLD_STANDARD_CERTIFIED_PROJECT",
+    "gsf_standards_version": "Gold Standard for the Global Goals",
+    "estimated_annual_credits": 11594,
+    "crediting_period_start_date": "2022-11-01",
+    "crediting_period_end_date": "2027-10-31",
+    "methodology": "GS TPDDTEC v3.1",
+    "type": "Energy Efficiency - Domestic",
+    "size": "Small Scale",
+    "sustaincert_id": 11322,
+    "sustaincert_url": "https://assurance-platform.goldstandard.org/project-documents/GS11322",
+    "project_developer": "UpEnergy Group",
+    "country": "Congo, the Democratic Republic of the",
+    "country_code": "CD",
+    "latitude": null,
+    "longitude": null,
+    "state": null,
+    "carbon_stream": "GS_VER",
+    "programme_of_activities": "VPA",
+    "crediting_periods": null,
+    "poa_project_id": 2922,
+    "poa_project_sustaincert_id": 10963,
+    "sustainable_development_goals": [
+      {
+        "name": "Goal 3: Good Health and Well-Being",
+        "issuable_products": [
+          {
+            "name": "Averted Disability Adjusted Life Year",
+            "abbreviation": "ADALY"
+          }
+        ]
+      },
+      {
+        "name": "Goal 15: Life On Land",
+        "issuable_products": []
+      },
+      {
+        "name": "Goal 1: No Poverty",
+        "issuable_products": [
+          {
+            "name": "Verified Emission Reduction",
+            "abbreviation": "VER"
+          }
+        ]
+      },
+      {
+        "name": "Goal 12: Responsible Production and Consumption",
+        "issuable_products": []
+      },
+      {
+        "name": "Goal 8: Decent Work and Economic Growth",
+        "issuable_products": []
+      },
+      {
+        "name": "Goal 5: Gender Equality",
+        "issuable_products": []
+      },
+      {
+        "name": "Goal 7: Affordable and Clean Energy",
+        "issuable_products": []
+      },
+      {
+        "name": "Goal 13: Climate Action",
+        "issuable_products": [
+          {
+            "name": "Verified Emission Reduction",
+            "abbreviation": "VER"
+          },
+          {
+            "name": "Certified Emission Reduction",
+            "abbreviation": "CER"
+          },
+          {
+            "name": "Renewable Energy Certificate",
+            "abbreviation": "REC"
+          },
+          {
+            "name": "Planned Emission Reduction",
+            "abbreviation": "PER"
+          }
+        ]
+      }
+    ],
+    "has_corsia_eligible_credits": false,
+    "labels": []
+  },
+  "GS_3381": {
+    "id": "3381",
+    "created_at": "2021-09-13T04:35:00Z",
+    "updated_at": "2025-03-19T07:09:04Z",
+    "name": "Hoa Binh 5 Wind Power Project \u2013 Phase 1",
+    "description": "Hoa Binh 5 Wind Power Project \u2013 Phase 1 involves the construction of a wind power plant at Vinh Thinh and Vinh Hau communes, Hoa Binh district, Bac Lieu province, Viet Nam. The main purpose of this project activity is to generate clean form of electricity through renewable wind energy sources by using wind turbines.  The installed capacity and estimated net annual power generation is 80 MW and 283,385 MWh, respectively. The project activity will be connected to national grid via 220 kV transformer.",
+    "status": "GOLD_STANDARD_CERTIFIED_DESIGN",
+    "gsf_standards_version": "Gold Standard for the Global Goals",
+    "estimated_annual_credits": 246056,
+    "crediting_period_start_date": "2021-10-01",
+    "crediting_period_end_date": "2026-09-30",
+    "methodology": "ACM0002 Grid-connected electricity generation from renewable sources",
+    "type": "Other",
+    "size": "Large Scale",
+    "sustaincert_id": 11392,
+    "sustaincert_url": "https://assurance-platform.goldstandard.org/project-documents/GS11392",
+    "project_developer": "Coral Future Pte. Ltd.",
+    "country": "Viet Nam",
+    "country_code": "VN",
+    "latitude": null,
+    "longitude": null,
+    "state": null,
+    "carbon_stream": "GS_VER",
+    "programme_of_activities": "Standalone",
+    "crediting_periods": null,
+    "sustainable_development_goals": [
+      {
+        "name": "Goal 8: Decent Work and Economic Growth",
+        "issuable_products": []
+      },
+      {
+        "name": "Goal 7: Affordable and Clean Energy",
+        "issuable_products": []
+      },
+      {
+        "name": "Goal 13: Climate Action",
+        "issuable_products": [
+          {
+            "name": "Verified Emission Reduction",
+            "abbreviation": "VER"
+          },
+          {
+            "name": "Certified Emission Reduction",
+            "abbreviation": "CER"
+          },
+          {
+            "name": "Renewable Energy Certificate",
+            "abbreviation": "REC"
+          },
+          {
+            "name": "Planned Emission Reduction",
+            "abbreviation": "PER"
+          }
+        ]
+      }
+    ],
+    "has_corsia_eligible_credits": false,
+    "labels": []
+  },
+  "GS_3421": {
+    "id": "3421",
+    "created_at": "2021-09-15T06:17:53Z",
+    "updated_at": "2025-12-20T11:08:36Z",
+    "name": "Fajina Geothermal Based Space Heating System",
+    "description": "According to the requirements of the above Plan, Zhengzhou municipal government will take a series of measures to improve the environment and residents' living conditions. The project activity is designed to introduce geothermal energy-based space heating system to realize heat supply to a series of new residential buildings in Zhengzhou city over winter season, which will displace heat supply from isolated coal-fired boilers as a business-as-usual scenario in the project area. The project can supply geothermal heat to 8,813 thousand m2 of newly built residential buildings with a total heating load of 440.65 MW. Emission reduction credits will be earned using geothermal energy instead of the combustion of fossil fuel for space heating. ",
+    "status": "GOLD_STANDARD_CERTIFIED_PROJECT",
+    "gsf_standards_version": "Gold Standard for the Global Goals",
+    "estimated_annual_credits": 487050,
+    "crediting_period_start_date": "2021-01-01",
+    "crediting_period_end_date": "2025-12-31",
+    "methodology": "AM0072 Fossil Fuel Displacement by Geothermal Resources for Space Heating",
+    "type": "Geothermal",
+    "size": "Large Scale",
+    "sustaincert_id": 11400,
+    "sustaincert_url": "https://assurance-platform.goldstandard.org/project-documents/GS11400",
+    "project_developer": "Profit Carbon Environmental Energy Technology (Shanghai) Co., Ltd.",
+    "country": "China",
+    "country_code": "CN",
+    "latitude": null,
+    "longitude": null,
+    "state": null,
+    "carbon_stream": "GS_VER",
+    "programme_of_activities": "Standalone",
+    "crediting_periods": null,
+    "sustainable_development_goals": [
+      {
+        "name": "Goal 7: Affordable and Clean Energy",
+        "issuable_products": []
+      },
+      {
+        "name": "Goal 13: Climate Action",
+        "issuable_products": [
+          {
+            "name": "Verified Emission Reduction",
+            "abbreviation": "VER"
+          },
+          {
+            "name": "Certified Emission Reduction",
+            "abbreviation": "CER"
+          },
+          {
+            "name": "Renewable Energy Certificate",
+            "abbreviation": "REC"
+          },
+          {
+            "name": "Planned Emission Reduction",
+            "abbreviation": "PER"
+          }
+        ]
+      },
+      {
+        "name": "Goal 8: Decent Work and Economic Growth",
+        "issuable_products": []
+      }
+    ],
+    "has_corsia_eligible_credits": false,
+    "labels": [
+      "EMISSION_REDUCTION"
+    ]
+  },
+  "GS_3975": {
+    "id": "3975",
+    "created_at": "2023-02-13T07:59:20Z",
+    "updated_at": "2024-12-11T17:25:28Z",
+    "name": "Illoulofin PV Solar Plant - Defissol",
+    "description": "Benin is highly dependent on the countries of the sub-region and faces difficulties in meeting the increasing demand for power. The national electricity\noperator, the Soci\u00e9t\u00e9 Beninoise d'Energie Electrique (SBEE), suffers from a lack of investment in its networks and shortcomings in its information system.\nThe Government's strategy, included in the plan called \u201cPlan de Redressement durable du sous-secteur de l\u2019Electricit\u00e9\u201d (PRSE), aims to ensure a steady,\nsecure and sustainable electricity supply at a lower cost by strengthening the local production capacity and diversifying the production sources, including\nthrough solar energy. The improvement of the performances of SBEE is also a priority objective of the PRSE.\n\nThe DEFISSOL project aims to increase Benin's production capacities through the installation of a 25 MWp solar photovoltaic power plant on the Onigbolo site, connected to the grid. It also aims to modernize the SBEE information system to improve its performance.\nWith a very competitive production cost, the Onigbolo power plant will reduce the energy production costs in Benin and the country's dependence on oil\nproducts. At the local level, the socio-economic benefits in terms of job creation will be significant. In terms of environmental impact, the project will\nreduce greenhouse emissions by 25,000 tons of CO2-equivalent per year over 25 years. The modernisation of the information system of the SBEE will\nimprove the management and the financial",
+    "status": "GOLD_STANDARD_CERTIFIED_PROJECT",
+    "gsf_standards_version": "Gold Standard for the Global Goals",
+    "estimated_annual_credits": 25176,
+    "crediting_period_start_date": "2022-07-12",
+    "crediting_period_end_date": "2027-07-11",
+    "methodology": "ACM0002 Grid-connected electricity generation from renewable sources",
+    "type": "PV",
+    "size": "Large Scale",
+    "sustaincert_id": 12054,
+    "sustaincert_url": "https://assurance-platform.goldstandard.org/project-documents/GS12054",
+    "project_developer": "REPUBLIQUE DU BENIN",
+    "country": "Benin",
+    "country_code": "BJ",
+    "latitude": null,
+    "longitude": null,
+    "state": null,
+    "carbon_stream": "VER",
+    "programme_of_activities": "Standalone",
+    "crediting_periods": null,
+    "sustainable_development_goals": [
+      {
+        "name": "Goal 7: Affordable and Clean Energy",
+        "issuable_products": []
+      },
+      {
+        "name": "Goal 13: Climate Action",
+        "issuable_products": [
+          {
+            "name": "Verified Emission Reduction",
+            "abbreviation": "VER"
+          },
+          {
+            "name": "Certified Emission Reduction",
+            "abbreviation": "CER"
+          },
+          {
+            "name": "Renewable Energy Certificate",
+            "abbreviation": "REC"
+          },
+          {
+            "name": "Planned Emission Reduction",
+            "abbreviation": "PER"
+          }
+        ]
+      },
+      {
+        "name": "Goal 8: Decent Work and Economic Growth",
+        "issuable_products": []
+      }
+    ],
+    "has_corsia_eligible_credits": false,
+    "labels": []
+  },
+  "GS_4210": {
+    "id": "4210",
+    "created_at": "2023-08-10T06:15:32Z",
+    "updated_at": "2023-08-10T06:15:32Z",
+    "name": "Energy Efficiency Measures at Gera Commerzone Building No. 5 of KRC Infrastructure & Projects Pvt. Ltd., Kharadi, Pune",
+    "description": "The proposed project activity involves installation and operation of efficient Heating, Venting and Air-conditioning (HVAC) system in a commercial building as a part of controlled temperature maintenance in the whole building. The proposed project activity will be installed at Gera Commerzone Building No. 5 of KRC Infrastructure & Projects, Maharashtra state of India. \nThese efficient measures adopted in the building envelope, HVAC, Electrical & Lighting system will result in reduction of consumption of elctricity compared to that of a conventional building with similar gross floor area and occupancy with same purpose leading to subsequent energy in GHG emission reduction.\nIn the absence of the project activity, conventional systems would have been installed in the building which will consume more electricity. The electricity consumed is imported from the Indian grid which is dominated by fossil fuel based thermal power plants.\nThe project activity thus saves anthropogenic emission of greenhouse gases (GHGs) in to the atmosphere associated with the equivalent amount of electricity generation from the fossil fuel-based grid connected power plant.",
+    "status": "LISTED",
+    "gsf_standards_version": "Gold Standard for the Global Goals",
+    "estimated_annual_credits": 6772,
+    "crediting_period_start_date": "2023-05-01",
+    "crediting_period_end_date": "2028-04-30",
+    "methodology": "AMS-II.E. Energy efficiency and fuel switching measures for buildings",
+    "type": "Energy Efficiency - Commercial Sector",
+    "size": "Small Scale",
+    "sustaincert_id": 12167,
+    "sustaincert_url": "https://assurance-platform.goldstandard.org/project-documents/GS12167",
+    "project_developer": "KRC INFRASTRUCTURE AND PROJECTS PRIVATE LIMITED",
+    "country": "India",
+    "country_code": "IN",
+    "latitude": null,
+    "longitude": null,
+    "state": null,
+    "carbon_stream": "VER",
+    "programme_of_activities": "Standalone",
+    "crediting_periods": null,
+    "sustainable_development_goals": [
+      {
+        "name": "Goal 7: Affordable and Clean Energy",
+        "issuable_products": []
+      },
+      {
+        "name": "Goal 13: Climate Action",
+        "issuable_products": [
+          {
+            "name": "Verified Emission Reduction",
+            "abbreviation": "VER"
+          },
+          {
+            "name": "Certified Emission Reduction",
+            "abbreviation": "CER"
+          },
+          {
+            "name": "Renewable Energy Certificate",
+            "abbreviation": "REC"
+          },
+          {
+            "name": "Planned Emission Reduction",
+            "abbreviation": "PER"
+          }
+        ]
+      },
+      {
+        "name": "Goal 8: Decent Work and Economic Growth",
+        "issuable_products": []
+      }
+    ],
+    "has_corsia_eligible_credits": false,
+    "labels": []
+  },
+  "GS_4220": {
+    "id": "4220",
+    "created_at": "2023-08-11T03:11:28Z",
+    "updated_at": "2026-01-05T08:09:51Z",
+    "name": "Safe Water Programme \u2013 Kenya - VPA 60",
+    "description": "The stated goal of proposed VPA is widespread dissemination of low GHG water purification technologies (WPS) to schools and other institutions in Kenya. The VPA will use carbon finance to support local partners engaged in operation, sales and distribution and maintenance of various WPS technologies.",
+    "status": "GOLD_STANDARD_CERTIFIED_PROJECT",
+    "gsf_standards_version": "Gold Standard for the Global Goals",
+    "estimated_annual_credits": 60000,
+    "crediting_period_start_date": "2023-07-06",
+    "crediting_period_end_date": "2028-07-05",
+    "methodology": null,
+    "type": "Energy Efficiency - Domestic",
+    "size": "Small Scale",
+    "sustaincert_id": 12262,
+    "sustaincert_url": "https://assurance-platform.goldstandard.org/project-documents/GS12262",
+    "project_developer": "Impact Carbon",
+    "country": "Kenya",
+    "country_code": "KE",
+    "latitude": null,
+    "longitude": null,
+    "state": null,
+    "carbon_stream": "GS_VER",
+    "programme_of_activities": "VPA",
+    "crediting_periods": null,
+    "poa_project_id": 3177,
+    "poa_project_sustaincert_id": 11189,
+    "sustainable_development_goals": [
+      {
+        "name": "Goal 3: Good Health and Well-Being",
+        "issuable_products": [
+          {
+            "name": "Averted Disability Adjusted Life Year",
+            "abbreviation": "ADALY"
+          }
+        ]
+      },
+      {
+        "name": "Goal 6: Clean Water and Sanitation",
+        "issuable_products": [
+          {
+            "name": "Water Benefit Certificate",
+            "abbreviation": "WBC"
+          }
+        ]
+      },
+      {
+        "name": "Goal 1: No Poverty",
+        "issuable_products": [
+          {
+            "name": "Verified Emission Reduction",
+            "abbreviation": "VER"
+          }
+        ]
+      },
+      {
+        "name": "Goal 8: Decent Work and Economic Growth",
+        "issuable_products": []
+      },
+      {
+        "name": "Goal 7: Affordable and Clean Energy",
+        "issuable_products": []
+      },
+      {
+        "name": "Goal 13: Climate Action",
+        "issuable_products": [
+          {
+            "name": "Verified Emission Reduction",
+            "abbreviation": "VER"
+          },
+          {
+            "name": "Certified Emission Reduction",
+            "abbreviation": "CER"
+          },
+          {
+            "name": "Renewable Energy Certificate",
+            "abbreviation": "REC"
+          },
+          {
+            "name": "Planned Emission Reduction",
+            "abbreviation": "PER"
+          }
+        ]
+      }
+    ],
+    "has_corsia_eligible_credits": false,
+    "labels": [
+      "EMISSION_REDUCTION"
+    ]
+  },
+  "GS_4221": {
+    "id": "4221",
+    "created_at": "2023-08-11T03:13:11Z",
+    "updated_at": "2026-01-05T09:08:13Z",
+    "name": " Safe Water Programme \u2013 Kenya - VPA 68",
+    "description": "The stated goal of proposed VPA is widespread dissemination of low GHG water purification technologies (WPS) to schools and other institutions in Kenya. The VPA will use carbon finance to support local partners engaged in operation, sales and distribution and maintenance of various WPS technologies.",
+    "status": "GOLD_STANDARD_CERTIFIED_DESIGN",
+    "gsf_standards_version": "Gold Standard for the Global Goals",
+    "estimated_annual_credits": 58718,
+    "crediting_period_start_date": "2025-11-30",
+    "crediting_period_end_date": "2030-11-29",
+    "methodology": null,
+    "type": "Energy Efficiency - Domestic",
+    "size": "Small Scale",
+    "sustaincert_id": 12270,
+    "sustaincert_url": "https://assurance-platform.goldstandard.org/project-documents/GS12270",
+    "project_developer": "Impact Carbon",
+    "country": "Kenya",
+    "country_code": "KE",
+    "latitude": null,
+    "longitude": null,
+    "state": null,
+    "carbon_stream": "GS_VER",
+    "programme_of_activities": "VPA",
+    "crediting_periods": null,
+    "poa_project_id": 3177,
+    "poa_project_sustaincert_id": 11189,
+    "sustainable_development_goals": [
+      {
+        "name": "Goal 6: Clean Water and Sanitation",
+        "issuable_products": [
+          {
+            "name": "Water Benefit Certificate",
+            "abbreviation": "WBC"
+          }
+        ]
+      },
+      {
+        "name": "Goal 7: Affordable and Clean Energy",
+        "issuable_products": []
+      },
+      {
+        "name": "Goal 13: Climate Action",
+        "issuable_products": [
+          {
+            "name": "Verified Emission Reduction",
+            "abbreviation": "VER"
+          },
+          {
+            "name": "Certified Emission Reduction",
+            "abbreviation": "CER"
+          },
+          {
+            "name": "Renewable Energy Certificate",
+            "abbreviation": "REC"
+          },
+          {
+            "name": "Planned Emission Reduction",
+            "abbreviation": "PER"
+          }
+        ]
+      },
+      {
+        "name": "Goal 3: Good Health and Well-Being",
+        "issuable_products": [
+          {
+            "name": "Averted Disability Adjusted Life Year",
+            "abbreviation": "ADALY"
+          }
+        ]
+      },
+      {
+        "name": "Goal 8: Decent Work and Economic Growth",
+        "issuable_products": []
+      },
+      {
+        "name": "Goal 1: No Poverty",
+        "issuable_products": [
+          {
+            "name": "Verified Emission Reduction",
+            "abbreviation": "VER"
+          }
+        ]
+      }
+    ],
+    "has_corsia_eligible_credits": false,
+    "labels": []
+  },
+  "GS_4240": {
+    "id": "4240",
+    "created_at": "2023-08-23T06:37:36Z",
+    "updated_at": "2026-03-17T16:36:01Z",
+    "name": "Biomass Briquettes in Kenyan Manufacturing Facilities",
+    "description": "The PoA facilitates and promotes a switch of fuels in manufacturing processes in Kenya, from non-renewable biomass (firewood) to renewable biomass briquettes made from bagasse \u2013 a by-product of the sugar industry in the country.",
+    "status": "GOLD_STANDARD_CERTIFIED_DESIGN",
+    "gsf_standards_version": "Gold Standard for the Global Goals",
+    "estimated_annual_credits": 0,
+    "crediting_period_start_date": "2023-05-05",
+    "crediting_period_end_date": "2028-05-04",
+    "methodology": "AMS-III.AS. Switch from fossil fuel to biomass in existing manufacturing facilities for non-energy applications",
+    "type": "Biomass, or Liquid Biofuel - Heat",
+    "size": "Small Scale",
+    "sustaincert_id": 12187,
+    "sustaincert_url": "https://assurance-platform.goldstandard.org/project-documents/GS12187",
+    "project_developer": "TAMU DMCC",
+    "country": "Kenya",
+    "country_code": "KE",
+    "latitude": null,
+    "longitude": null,
+    "state": null,
+    "carbon_stream": "GS_VER",
+    "programme_of_activities": "POA",
+    "crediting_periods": "[{\"id\":1,\"start_date\":\"2023-05-05\",\"end_date\":\"2028-05-04\",\"methodologies\":[{\"id\":124,\"description\":\"AMS-III.AS. Switch from fossil fuel to biomass in existing manufacturing facilities for non-energy applications\",\"version\":null}]}]",
+    "sustainable_development_goals": [
+      {
+        "name": "Goal 15: Life On Land",
+        "issuable_products": []
+      },
+      {
+        "name": "Goal 8: Decent Work and Economic Growth",
+        "issuable_products": []
+      },
+      {
+        "name": "Goal 5: Gender Equality",
+        "issuable_products": []
+      },
+      {
+        "name": "Goal 7: Affordable and Clean Energy",
+        "issuable_products": []
+      },
+      {
+        "name": "Goal 13: Climate Action",
+        "issuable_products": [
+          {
+            "name": "Verified Emission Reduction",
+            "abbreviation": "VER"
+          },
+          {
+            "name": "Certified Emission Reduction",
+            "abbreviation": "CER"
+          },
+          {
+            "name": "Renewable Energy Certificate",
+            "abbreviation": "REC"
+          },
+          {
+            "name": "Planned Emission Reduction",
+            "abbreviation": "PER"
+          }
+        ]
+      }
+    ],
+    "has_corsia_eligible_credits": false,
+    "labels": []
+  },
+  "GS_4708": {
+    "id": "4708",
+    "created_at": "2024-10-28T20:41:24Z",
+    "updated_at": "2025-12-31T14:02:23Z",
+    "name": "GS11935 GS11934 RVPA-32 Promoting sustainable use of biomass energy resources in targeted communities",
+    "description": "This Gold Standard (GS) regular VPA is a program activity under the PoA titled \u201cPromoting sustainable use of biomass energy resources in targeted communities\u201d (GS11934) that fulfills the requirement of corresponding real case VPA GS 11935 \u201cGS11934 VPA-1 Promoting sustainable use of biomass energy resources in targeted communities\u201d. This VPA supports the implementation of improved cooking stoves to meet their cooking energy requirement for the households using traditional cooking stoves in the pre-project scenario in Nepal. ",
+    "status": "GOLD_STANDARD_CERTIFIED_PROJECT",
+    "gsf_standards_version": "Gold Standard for the Global Goals",
+    "estimated_annual_credits": 9466,
+    "crediting_period_start_date": "2023-08-14",
+    "crediting_period_end_date": "2028-08-13",
+    "methodology": "GS MS Simplified Methodology for Efficient Cookstoves v1.1",
+    "type": "Energy Efficiency - Domestic",
+    "size": "Micro Scale",
+    "sustaincert_id": 12732,
+    "sustaincert_url": "https://assurance-platform.goldstandard.org/project-documents/GS12732",
+    "project_developer": "Value Network Ventures Pte. Ltd.",
+    "country": "Nepal",
+    "country_code": "NP",
+    "latitude": null,
+    "longitude": null,
+    "state": null,
+    "carbon_stream": "GS_VER",
+    "programme_of_activities": "VPA",
+    "crediting_periods": null,
+    "poa_project_id": 3774,
+    "poa_project_sustaincert_id": 11934,
+    "sustainable_development_goals": [
+      {
+        "name": "Goal 7: Affordable and Clean Energy",
+        "issuable_products": []
+      },
+      {
+        "name": "Goal 13: Climate Action",
+        "issuable_products": [
+          {
+            "name": "Verified Emission Reduction",
+            "abbreviation": "VER"
+          },
+          {
+            "name": "Certified Emission Reduction",
+            "abbreviation": "CER"
+          },
+          {
+            "name": "Renewable Energy Certificate",
+            "abbreviation": "REC"
+          },
+          {
+            "name": "Planned Emission Reduction",
+            "abbreviation": "PER"
+          }
+        ]
+      },
+      {
+        "name": "Goal 3: Good Health and Well-Being",
+        "issuable_products": [
+          {
+            "name": "Averted Disability Adjusted Life Year",
+            "abbreviation": "ADALY"
+          }
+        ]
+      },
+      {
+        "name": "Goal 8: Decent Work and Economic Growth",
+        "issuable_products": []
+      },
+      {
+        "name": "Goal 15: Life On Land",
+        "issuable_products": []
+      }
+    ],
+    "has_corsia_eligible_credits": false,
+    "labels": [
+      "EMISSION_REDUCTION"
+    ]
+  },
+  "GS_5012": {
+    "id": "5012",
+    "created_at": "2025-03-19T06:59:36Z",
+    "updated_at": "2025-04-30T09:58:51Z",
+    "name": "Enhanced Irrigation Technique for Rice Production to Mitigate Climate Change 002",
+    "description": "The project reduces methane (CH4) emissions by implementing improved water management practices, specifically the Alternate Wetting and Drying (AWD) method in paddy fields. AWD has been proven to lower CH4 emissions by up to 48% compared to continuously flooded conditions, where anaerobic decomposition of organic matter results in high methane emissions.",
+    "status": "LISTED",
+    "gsf_standards_version": "Gold Standard for the Global Goals",
+    "estimated_annual_credits": 54153,
+    "crediting_period_start_date": "2024-12-05",
+    "crediting_period_end_date": "2034-12-05",
+    "methodology": "Methane Emission Reduction By Adjusted Water Management Practice In Rice Cultivation",
+    "type": "Other",
+    "size": "Small Scale",
+    "sustaincert_id": 23245,
+    "sustaincert_url": "https://assurance-platform.goldstandard.org/project-documents/GS23245",
+    "project_developer": "Sow and Reap Agro Private Limited",
+    "country": "India",
+    "country_code": "IN",
+    "latitude": null,
+    "longitude": null,
+    "state": null,
+    "carbon_stream": "GS_VER",
+    "programme_of_activities": "Standalone",
+    "crediting_periods": null,
+    "sustainable_development_goals": [
+      {
+        "name": "Goal 13: Climate Action",
+        "issuable_products": [
+          {
+            "name": "Verified Emission Reduction",
+            "abbreviation": "VER"
+          },
+          {
+            "name": "Certified Emission Reduction",
+            "abbreviation": "CER"
+          },
+          {
+            "name": "Renewable Energy Certificate",
+            "abbreviation": "REC"
+          },
+          {
+            "name": "Planned Emission Reduction",
+            "abbreviation": "PER"
+          }
+        ]
+      },
+      {
+        "name": "Goal 8: Decent Work and Economic Growth",
+        "issuable_products": []
+      },
+      {
+        "name": "Goal 2: Zero Hunger",
+        "issuable_products": []
+      },
+      {
+        "name": "Goal 5: Gender Equality",
+        "issuable_products": []
+      },
+      {
+        "name": "Goal 4: Quality Education",
+        "issuable_products": []
+      }
+    ],
+    "has_corsia_eligible_credits": false,
+    "labels": []
+  },
+  "GS_5618": {
+    "error": "Status 404"
+  },
+  "GS_6503": {
+    "error": "Status 404"
+  },
+  "GS_6588": {
+    "error": "Status 404"
+  }
+}

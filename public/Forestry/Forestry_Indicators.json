@@ -1,0 +1,326 @@
+{
+  "forestry01": {
+    "IndicatorId": "forestry01",
+    "Indicator": "1.1.1 Proportion of the population living below the international poverty line by sex, age, employment status and geographic location (urban/rural)",
+    "SDG": "1. No poverty",
+    "SDG_Target": "1.1 By 2030, eradicate extreme poverty for all people everywhere, currently measured as people living on less than $1.25 a day",
+    "Description": "Refer to E-handbook on SDG indic https://unstats.un.org/wiki/display/SDGeHandbook/Goal+1",
+    "Guidance": null,
+    "Data Unit": null
+  },
+  "forestry02": {
+    "IndicatorId": "forestry02",
+    "Indicator": "1.2.1 Proportion of population living below the national poverty line, by sex and age",
+    "SDG": "1. No poverty",
+    "SDG_Target": "1.2 By 2030, reduce at least by half the proportion of men, women and children of all ages living in poverty in all its dimensions according to national definitions",
+    "Description": "Refer to E-handbook on SDG indic https://unstats.un.org/wiki/display/SDGeHandbook/Goal+1",
+    "Guidance": null,
+    "Data Unit": null
+  },
+  "forestry03": {
+    "IndicatorId": "forestry03",
+    "Indicator": "Change in SOC stock due to activities implemented in project activity",
+    "SDG": "2. Zero hunger",
+    "SDG_Target": "2.4 By 2030, ensure sustainable food production systems and implement resilient agricultural practices",
+    "Description": "Refers to the change in SOC level due to sustainable soil management practices implemented in the reporting period",
+    "Guidance": "As per applicable methodology",
+    "Data Unit": "%"
+  },
+  "forestry04": {
+    "IndicatorId": "forestry04",
+    "Indicator": "Change in farmer income as a result of project, by gender and indigenous status",
+    "SDG": "2. Zero hunger",
+    "SDG_Target": "2.3 By 2030, double the agricultural productivity and incomes of small-scale food producers",
+    "Description": "Refers to change in farmer income due to adoption of measures implemented as part of project activity",
+    "Guidance": "May be compiled using farmer surveys where detailed income surveys are unavailable",
+    "Data Unit": "Percentage increase in average annual salary"
+  },
+  "forestry05": {
+    "IndicatorId": "forestry05",
+    "Indicator": "Area under reduced/avoided open burning of biomass, crop residue",
+    "SDG": "3. Good health and well being",
+    "SDG_Target": "3.9 Reduce deaths and illnesses from hazardous chemicals and pollution",
+    "Description": "Total land area where alternative measures are implemented to avoid open biomass burning",
+    "Guidance": "Presence of baseline open burning must be established through inspection",
+    "Data Unit": "ha"
+  },
+  "forestry06": {
+    "IndicatorId": "forestry06",
+    "Indicator": "Number of farmers reduced/avoided open burning",
+    "SDG": "3. Good health and well being",
+    "SDG_Target": "3.9 Reduce deaths and illnesses from hazardous chemicals and pollution",
+    "Description": "Number of farmers adopting alternatives to open burning",
+    "Guidance": "Baseline open burning must be verified",
+    "Data Unit": "Number"
+  },
+  "forestry07": {
+    "IndicatorId": "forestry07",
+    "Indicator": "Number of employees provided skill development training",
+    "SDG": "4. Quality education",
+    "SDG_Target": "4.4 Increase number of youth and adults with relevant skills",
+    "Description": "Number of employees receiving training",
+    "Guidance": "Training categorized as skills-based, technical, governance, etc.",
+    "Data Unit": "Number"
+  },
+  "forestry08": {
+    "IndicatorId": "forestry08",
+    "Indicator": "Number of training hours provided for employees, disaggregated by gender",
+    "SDG": "4. Quality education",
+    "SDG_Target": "4.4 Increase number of youth and adults with relevant skills",
+    "Description": "Total training hours delivered",
+    "Guidance": "Includes internal and external training opportunities",
+    "Data Unit": "Number"
+  },
+  "forestry09": {
+    "IndicatorId": "forestry09",
+    "Indicator": "Proportion of women in managerial positions",
+    "SDG": "5. Gender equality",
+    "SDG_Target": "5.5 Ensure women’s full and effective participation",
+    "Description": "Percentage of women in managerial positions",
+    "Guidance": "Refer to SDG 5.5.2 metadata",
+    "Data Unit": "%"
+  },
+  "forestry10": {
+    "IndicatorId": "forestry10",
+    "Indicator": "Average time saving associated with cooking time and fuel collection",
+    "SDG": "5. Gender equality",
+    "SDG_Target": "5.4 Recognize unpaid care work",
+    "Description": "Time savings due to adoption of project technology",
+    "Guidance": "Refer to Gold Standard gender guidelines",
+    "Data Unit": "minutes/hr per household"
+  },
+  "forestry11": {
+    "IndicatorId": "forestry11",
+    "Indicator": "Gender wage equity",
+    "SDG": "5. Gender equality",
+    "SDG_Target": "5.1 End discrimination against women",
+    "Description": "Ratio of average wage paid to female employees compared to male employees",
+    "Guidance": "Use wage comparison formula",
+    "Data Unit": "Ratio"
+  },
+  "forestry12": {
+    "IndicatorId": "forestry12",
+    "Indicator": "Number of women serving in leadership roles",
+    "SDG": "5. Gender equality",
+    "SDG_Target": "5.5 Ensure women’s participation",
+    "Description": "Number of female managers and leaders",
+    "Guidance": "Count unique female individuals in leadership",
+    "Data Unit": "Number"
+  },
+  "forestry13": {
+    "IndicatorId": "forestry13",
+    "Indicator": "Turbidity of (river) water",
+    "SDG": "6. Clean water and sanitation",
+    "SDG_Target": "6.6 Protect and restore water-related ecosystems",
+    "Description": "Measurement of river water turbidity levels within the project area",
+    "Guidance": "Monitoring should compare baseline and reporting period measurements",
+    "Data Unit": "%"
+  },
+  "forestry14": {
+    "IndicatorId": "forestry14",
+    "Indicator": "Water retention capacity",
+    "SDG": "6. Clean water and sanitation",
+    "SDG_Target": "6.4 Increase water-use efficiency",
+    "Description": "Change in soil or landscape water retention capacity due to project activities",
+    "Guidance": "Assess via hydrological or soil moisture monitoring",
+    "Data Unit": null
+  },
+  "forestry15": {
+    "IndicatorId": "forestry15",
+    "Indicator": "Number of beneficiaries: Households",
+    "SDG": "7. Affordable and clean energy",
+    "SDG_Target": "7.1 Ensure universal access to affordable, reliable and modern energy",
+    "Description": "Number of unique households provided access to clean fuels and technologies",
+    "Guidance": "May estimate using number of operational units distributed",
+    "Data Unit": "Number of households"
+  },
+  "forestry16": {
+    "IndicatorId": "forestry16",
+    "Indicator": "Number of beneficiaries: Individuals",
+    "SDG": "7. Affordable and clean energy",
+    "SDG_Target": "7.1 Ensure universal access to affordable, reliable and modern energy",
+    "Description": "Number of unique individuals provided access to clean fuels and technologies",
+    "Guidance": "Account only users actively using clean fuels",
+    "Data Unit": "Number of users"
+  },
+  "forestry17": {
+    "IndicatorId": "forestry17",
+    "Indicator": "Total number of jobs",
+    "SDG": "8. Decent work and economic growth",
+    "SDG_Target": "8.5 Achieve full and productive employment",
+    "Description": "Total jobs generated as a result of project implementation",
+    "Guidance": "Disclose employees by contract type and gender",
+    "Data Unit": "Number"
+  },
+  "forestry18": {
+    "IndicatorId": "forestry18",
+    "Indicator": "Total number of employees earning above local minimum wage",
+    "SDG": "8. Decent work and economic growth",
+    "SDG_Target": "8.5 Achieve full and productive employment",
+    "Description": "Number of employees earning above minimum wage",
+    "Guidance": "Provide reference to official minimum wage source",
+    "Data Unit": "Number"
+  },
+  "forestry19": {
+    "IndicatorId": "forestry19",
+    "Indicator": "Total number of employees paid living wage",
+    "SDG": "8. Decent work and economic growth",
+    "SDG_Target": "8.5 Achieve full and productive employment",
+    "Description": "Number of employees receiving a living wage",
+    "Guidance": "Refer to Anker methodology or equivalent",
+    "Data Unit": "USD or local currency per month"
+  },
+  "forestry20": {
+    "IndicatorId": "forestry20",
+    "Indicator": "Direct in-field labor created",
+    "SDG": "8. Decent work and economic growth",
+    "SDG_Target": "8.5 Achieve full and productive employment",
+    "Description": "Total work hours created by project activities",
+    "Guidance": "Report total hours equivalent labor created, disaggregated by gender",
+    "Data Unit": "Person-hours"
+  },
+  "forestry21": {
+    "IndicatorId": "forestry21",
+    "Indicator": "Economic value generated locally via employment",
+    "SDG": "8. Decent work and economic growth",
+    "SDG_Target": "8.9 Promote sustainable tourism and local economic development",
+    "Description": "Total monetary value paid towards local employment",
+    "Guidance": "Define local employment clearly",
+    "Data Unit": "$"
+  },
+  "forestry22": {
+    "IndicatorId": "forestry22",
+    "Indicator": "Income generation from other activities (e.g., ecotourism)",
+    "SDG": "8. Decent work and economic growth",
+    "SDG_Target": "8.5 Achieve full and productive employment",
+    "Description": "Revenue generated from additional livelihood activities",
+    "Guidance": "Document tourism and other enterprise income streams",
+    "Data Unit": null
+  },
+  "forestry23": {
+    "IndicatorId": "forestry23",
+    "Indicator": "Average hourly earnings of employees by sex, age, occupation and disability",
+    "SDG": "8. Decent work and economic growth",
+    "SDG_Target": "8.5 Achieve full and productive employment",
+    "Description": "Mean hourly earnings disaggregated by sex and demographic characteristics",
+    "Guidance": "Calculate gender pay gap where applicable",
+    "Data Unit": null
+  },
+  "forestry24": {
+    "IndicatorId": "forestry24",
+    "Indicator": "Average reduction (%) in synthetic fertiliser used per ha",
+    "SDG": "12. Responsible consumption and production",
+    "SDG_Target": "12.4 Environmentally sound management of chemicals",
+    "Description": "Percentage reduction in synthetic fertilizer usage",
+    "Guidance": "Compare baseline and reporting period",
+    "Data Unit": "%"
+  },
+  "forestry25": {
+    "IndicatorId": "forestry25",
+    "Indicator": "Average reduction (%) in pesticide used per ha",
+    "SDG": "12. Responsible consumption and production",
+    "SDG_Target": "12.4 Environmentally sound management of chemicals",
+    "Description": "Percentage reduction in pesticide usage",
+    "Guidance": "Include WHO hazard classifications",
+    "Data Unit": "%"
+  },
+  "forestry26": {
+    "IndicatorId": "forestry26",
+    "Indicator": "Amount of GHG emissions avoided or sequestered",
+    "SDG": "13. Climate action",
+    "SDG_Target": "13.2 Integrate climate change measures into policies",
+    "Description": "Total greenhouse gas emissions avoided or sequestered",
+    "Guidance": "Use validated emission reduction methodologies",
+    "Data Unit": "tCO2eq"
+  },
+  "forestry27": {
+    "IndicatorId": "forestry27",
+    "Indicator": "Total non-Renewable wood fuel saved",
+    "SDG": "15. Life on land",
+    "SDG_Target": "15.1 Ensure conservation of terrestrial ecosystems",
+    "Description": "Total amount of non-Renewable biomass fuel saved",
+    "Guidance": "Adjust for fraction of non-Renewable biomass",
+    "Data Unit": "tonnes/year"
+  },
+  "forestry28": {
+    "IndicatorId": "forestry28",
+    "Indicator": "Forest areas managed sustainably",
+    "SDG": "15. Life on land",
+    "SDG_Target": "15.2 Promote sustainable forest management",
+    "Description": "Total forest area under sustainable management",
+    "Guidance": "Report area under certified or verified management",
+    "Data Unit": "ha"
+  },
+  "forestry29": {
+    "IndicatorId": "forestry29",
+    "Indicator": "Total above and below ground biomass stock in forest",
+    "SDG": "15. Life on land",
+    "SDG_Target": "15.2 Promote sustainable forest management",
+    "Description": "Increment in forest biomass stock",
+    "Guidance": "Apply GHG quantification methodologies",
+    "Data Unit": "tonnes of dry biomass"
+  },
+  "forestry30": {
+    "IndicatorId": "forestry30",
+    "Indicator": "Total area of Trees Planted",
+    "SDG": "15. Life on land",
+    "SDG_Target": "15.2 Promote sustainable forest management",
+    "Description": "Area of land on which trees were planted",
+    "Guidance": "Report cumulative planted area",
+    "Data Unit": "ha"
+  },
+  "forestry31": {
+    "IndicatorId": "forestry31",
+    "Indicator": "Total protected Land Area",
+    "SDG": "15. Life on land",
+    "SDG_Target": "15.5 Protect threatened species",
+    "Description": "Total land area marked as protected",
+    "Guidance": "Report percentage of project area protected",
+    "Data Unit": "ha"
+  },
+  "forestry32": {
+    "IndicatorId": "forestry32",
+    "Indicator": "Total Area of Trees Planted: Native Species",
+    "SDG": "15. Life on land",
+    "SDG_Target": "15.8 Prevent invasive species",
+    "Description": "Area planted with native species",
+    "Guidance": "Report percentage of native species coverage",
+    "Data Unit": "% or ha"
+  },
+  "forestry33": {
+    "IndicatorId": "forestry33",
+    "Indicator": "Number of protected threatened species",
+    "SDG": "15. Life on land",
+    "SDG_Target": "15.5 Protect threatened species",
+    "Description": "Number of threatened species protected in project area",
+    "Guidance": "Segment by IUCN conservation status",
+    "Data Unit": "Number or %"
+  },
+  "forestry34": {
+    "IndicatorId": "forestry34",
+    "Indicator": "Trends in species diversity",
+    "SDG": "15. Life on land",
+    "SDG_Target": "15.8 Reduce impact of invasive species",
+    "Description": "Changes in species diversity within the project area",
+    "Guidance": "Track inter- and intra-specific diversity",
+    "Data Unit": "%"
+  },
+  "forestry35": {
+    "IndicatorId": "forestry35",
+    "Indicator": "Trends in species distribution",
+    "SDG": "15. Life on land",
+    "SDG_Target": "15.8 Reduce impact of invasive species",
+    "Description": "Distribution trends of planted and native species",
+    "Guidance": "Derived from functional trait analysis",
+    "Data Unit": "%"
+  },
+  "forestry36": {
+    "IndicatorId": "forestry36",
+    "Indicator": "Total Area under sustainable forest management",
+    "SDG": "15. Life on land",
+    "SDG_Target": "15.5 Protect threatened species",
+    "Description": "Total land area under sustainable management practices",
+    "Guidance": "Report managed area annually",
+    "Data Unit": "ha"
+  }
+}

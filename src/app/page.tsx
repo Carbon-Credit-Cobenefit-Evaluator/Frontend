@@ -14,8 +14,7 @@ export default function HomePage() {
       <TrustSection />
       <HowItWorks />
       <UseCases />
-      <PreviewSection />
-      <CallToAction />
+    
     </main>
   );
 }
