@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 
 type Tab = "verra" | "gs";
@@ -9,40 +9,14 @@ type Row = {
   id: string;
   name: string;
   status: string;
+  category?: string;
   credits: number | null;
 };
 
-/* ===================== DATA EXTRACTION ===================== */
-
-function extractVerra(verraData: any): Row[] {
-  return Object.entries(verraData).map(([key, p]: any) => {
-    const attrs = p?.participationSummaries?.[0]?.attributes || [];
-
-    const get = (code: string) =>
-      attrs.find((a: any) => a.code === code)?.values?.[0]?.value;
-
-    return {
-      id: key,
-      name: p.resourceName || "—",
-      status: get("PROJECT_STATUS") || "—",
-      credits: Number(get("EST_ANNUAL_EMISSION_REDCT")) || null,
-    };
-  });
-}
-
-function extractGS(gsData: any): Row[] {
-  return Object.entries(gsData).map(([key, p]: any) => ({
-    id: key,
-    name: p.name || "—",
-    status: p.status || "—",
-    credits: p.estimated_annual_credits || null,
-  }));
-}
-
-/* ===================== STATUS STYLES ===================== */
+/* ===================== STATUS STYLE ===================== */
 
 function getStatusStyle(status: string) {
-  const s = status.toLowerCase();
+  const s = status?.toLowerCase() || "";
 
   if (s.includes("registered"))
     return "bg-emerald-50 text-emerald-700 ring-emerald-200";
@@ -55,111 +29,62 @@ function getStatusStyle(status: string) {
   return "bg-slate-100 text-slate-600 ring-slate-200";
 }
 
-function StatusBadge({ status }: { status: string }) {
-  return (
-    <span
-      className={`text-[11px] font-bold px-2.5 py-1 rounded-full ring-1 ${getStatusStyle(
-        status,
-      )}`}
-    >
-      {status}
-    </span>
-  );
-}
-
-/* ===================== PAGE ===================== */
+/* ===================== COMPONENT ===================== */
 
 export default function ProjectsPage() {
   const [tab, setTab] = useState<Tab>("verra");
-  const [search, setSearch] = useState("");
-  const [statusFilter, setStatusFilter] = useState("");
-
-  const [verra, setVerra] = useState<Row[]>([]);
-  const [gs, setGS] = useState<Row[]>([]);
+  const [data, setData] = useState<Row[]>([]);
   const [loading, setLoading] = useState(true);
 
-  /* ===================== FETCH DATA ===================== */
+  /* ================= FETCH FROM BACKEND ================= */
   useEffect(() => {
-    async function loadData() {
+    async function load() {
+      setLoading(true);
+
       try {
-        const [verraRes, gsRes] = await Promise.all([
-          fetch("/Forestry/verra_projects.json"),
-          fetch("/Forestry/goldstandard_projects.json"),
-        ]);
-
-        const verraJson = await verraRes.json();
-        const gsJson = await gsRes.json();
-
-        setVerra(extractVerra(verraJson));
-        setGS(extractGS(gsJson));
-      } catch (err) {
-        console.error("Failed to load data:", err);
+        if (tab === "verra") {
+          const res = await fetch("http://localhost:8000/projects/verra");
+          const json = await res.json();
+          setData(json);
+        } else {
+          setData([]); // GS empty for now
+        }
+      } catch (e) {
+        console.error("Fetch failed", e);
       } finally {
         setLoading(false);
       }
     }
 
-    loadData();
-  }, []);
+    load();
+  }, [tab]);
 
-  const data = tab === "verra" ? verra : gs;
-
-  /* UNIQUE STATUSES */
-  const statuses = useMemo(() => {
-    const s = new Set<string>();
-    data.forEach((p) => {
-      if (p.status && p.status !== "—") s.add(p.status);
-    });
-    return Array.from(s);
-  }, [data]);
-
-  /* FILTER */
-  const filtered = useMemo(() => {
-    const q = search.toLowerCase().trim();
-
-    return data.filter((p) => {
-      if (statusFilter && p.status !== statusFilter) return false;
-
-      if (!q) return true;
-
-      return p.name.toLowerCase().includes(q) || p.id.toLowerCase().includes(q);
-    });
-  }, [data, search, statusFilter]);
-
-  /* ===================== UI ===================== */
-
-  if (loading) {
-    return (
-      <div className="p-10 text-center text-slate-500">Loading projects...</div>
-    );
-  }
+  /* ================= UI ================= */
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-indigo-50 px-6 py-10">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto space-y-8">
         {/* HEADER */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-extrabold tracking-tight bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-              Projects
+            <h1 className="text-3xl font-extrabold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+              Carbon Projects
             </h1>
             <p className="text-sm text-slate-500 mt-1">
-              Explore carbon credit projects across registries
+              Explore verified projects and SDG impact
             </p>
           </div>
 
-          {/* SWITCH */}
-          <div className="flex bg-white/70 border rounded-xl p-1">
+          {/* TAB SWITCH */}
+          <div className="flex bg-white border rounded-xl p-1 shadow-sm">
             {["verra", "gs"].map((t) => (
               <button
                 key={t}
-                onClick={() => {
-                  setTab(t as Tab);
-                  setSearch("");
-                  setStatusFilter("");
-                }}
-                className={`px-4 py-1.5 text-sm font-bold rounded-lg ${
-                  tab === t ? "bg-indigo-600 text-white" : "text-slate-500"
+                onClick={() => setTab(t as Tab)}
+                className={`px-4 py-1.5 text-sm font-bold rounded-lg transition ${
+                  tab === t
+                    ? "bg-indigo-600 text-white"
+                    : "text-slate-500 hover:bg-slate-100"
                 }`}
               >
                 {t.toUpperCase()}
@@ -168,29 +93,67 @@ export default function ProjectsPage() {
           </div>
         </div>
 
-        {/* LIST */}
-        <div className="border rounded-xl overflow-hidden">
-          <div className="divide-y">
-            {filtered.map((p) => (
-              <Link key={p.id} href={`/verra/${p.id}`}>
-                <div className="grid grid-cols-4 p-4 hover:bg-indigo-50 cursor-pointer">
-                  <div>{p.id}</div>
-                  <div>{p.name}</div>
-                  <div>
-                    <StatusBadge status={p.status} />
-                  </div>
-                  <div className="text-right">
-                    {p.credits ? p.credits.toLocaleString() : "—"}
-                  </div>
-                </div>
-              </Link>
-            ))}
+        {/* LIST CARD */}
+        <div className="bg-white rounded-2xl border shadow-sm overflow-hidden">
+          {/* HEADER ROW */}
+          <div className="grid grid-cols-5 px-6 py-3 text-xs font-semibold text-slate-500 border-b bg-slate-50">
+            <div>ID</div>
+            <div>Name</div>
+            <div>Status</div>
+            <div>Category</div>
+            <div className="text-right">Credits</div>
           </div>
-        </div>
 
-        {filtered.length === 0 && (
-          <div className="text-center py-10">No projects found</div>
-        )}
+          {/* BODY */}
+          {loading ? (
+            <div className="p-10 text-center text-slate-500">
+              Loading projects...
+            </div>
+          ) : data.length === 0 ? (
+            <div className="p-10 text-center text-slate-400">
+              No projects available
+            </div>
+          ) : (
+            <div className="divide-y">
+              {data.map((p) => (
+                <Link key={p.id} href={`/verra/${p.id}`}>
+                  <div className="grid grid-cols-5 px-6 py-4 items-center hover:bg-indigo-50 transition cursor-pointer">
+                    {/* ID */}
+                    <div className="font-mono text-xs text-indigo-600">
+                      {p.id}
+                    </div>
+
+                    {/* NAME */}
+                    <div className="font-semibold text-sm text-slate-800 truncate">
+                      {p.name}
+                    </div>
+
+                    {/* STATUS */}
+                    <div>
+                      <span
+                        className={`text-[11px] font-bold px-2.5 py-1 rounded-full ring-1 ${getStatusStyle(
+                          p.status,
+                        )}`}
+                      >
+                        {p.status || "—"}
+                      </span>
+                    </div>
+
+                    {/* CATEGORY */}
+                    <div className="text-sm text-slate-600">
+                      {p.category || "—"}
+                    </div>
+
+                    {/* CREDITS */}
+                    <div className="text-right font-semibold text-slate-700">
+                      {p.credits ? p.credits.toLocaleString() : "—"}
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </main>
   );

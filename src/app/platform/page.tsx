@@ -8,9 +8,25 @@ export default function Home() {
   const [step, setStep] = useState("");
   const [history, setHistory] = useState<string[]>([]);
 
+  // ✅ KEEP ONLY SCORE
+  const [score, setScore] = useState<any>(null);
+
   const wsRef = useRef<WebSocket | null>(null);
 
   const fullProjectId = projectId ? `VCS_${projectId}` : "";
+
+  // ✅ ONLY FETCH SCORE
+  const fetchResults = async () => {
+    try {
+      const scoreRes = await fetch(
+        `http://localhost:8000/project/${fullProjectId}/score`,
+      );
+      const scoreData = await scoreRes.json();
+      setScore(scoreData);
+    } catch (e) {
+      console.error("Fetch results failed", e);
+    }
+  };
 
   // 🚀 Start ingestion
   const startIngestion = async () => {
@@ -19,26 +35,19 @@ export default function Home() {
     setStatus("running");
     setStep("Initializing...");
     setHistory(["Initializing..."]);
+    setScore(null);
 
-    // 🔌 OPEN WEBSOCKET
     const ws = new WebSocket(`ws://localhost:8000/ws/${fullProjectId}`);
     wsRef.current = ws;
-
-    ws.onopen = () => {
-      console.log("✅ WebSocket connected");
-    };
 
     ws.onmessage = (event) => {
       try {
         const data = JSON.parse(event.data);
-
         const msg = data.step;
         const msgStatus = data.status;
 
-        // update current step
         setStep(msg);
 
-        // update history
         setHistory((prev) => {
           if (prev[prev.length - 1] !== msg) {
             return [...prev, msg];
@@ -46,10 +55,10 @@ export default function Home() {
           return prev;
         });
 
-        // handle completion
         if (msgStatus === "done") {
           setStatus("done");
           ws.close();
+          fetchResults();
         }
 
         if (msgStatus === "failed") {
@@ -62,152 +71,94 @@ export default function Home() {
     };
 
     ws.onerror = () => {
-      console.error("❌ WebSocket error");
       setStatus("failed");
       ws.close();
     };
 
-    ws.onclose = () => {
-      console.log("🔌 WebSocket closed");
-    };
-
-    // ▶️ START BACKEND JOB
-    try {
-      await fetch(`http://localhost:8000/project/${fullProjectId}/start`, {
-        method: "POST",
-      });
-    } catch (err) {
-      console.error(err);
-      setStatus("failed");
-    }
+    await fetch(`http://localhost:8000/project/${fullProjectId}/start`, {
+      method: "POST",
+    });
   };
 
-  // 🎯 progress %
+  // 🔥 Slightly smoother progress
   const progressPercent =
     status === "running"
-      ? Math.min((history.length / 18) * 100, 100)
+      ? Math.min((history.length / 30) * 100, 95)
       : status === "done"
         ? 100
         : 0;
 
+  const verraLink = `https://registry.verra.org/app/projectDetail/VCS/${projectId}`;
+
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        background: "linear-gradient(135deg, #f0fdf4, #ecfeff)",
-        padding: "40px",
-        fontFamily: "Inter, sans-serif",
-      }}
-    >
-      <div
-        style={{
-          maxWidth: "750px",
-          margin: "auto",
-          background: "white",
-          padding: "30px",
-          borderRadius: "16px",
-          boxShadow: "0 20px 40px rgba(0,0,0,0.08)",
-        }}
-      >
-        <h1 style={{ marginBottom: "20px" }}>🌱 Carbon Project Evaluator</h1>
+    <div className="min-h-screen bg-gradient-to-br from-green-50 to-cyan-50 p-10 font-sans">
+      <div className="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+        {/* HEADER */}
+        <h1 className="text-2xl font-bold mb-6 text-gray-800">
+          🌱 Carbon Project Evaluator
+        </h1>
 
         {/* INPUT */}
-        <div style={{ display: "flex", gap: "10px", marginBottom: "20px" }}>
+        <div className="flex gap-3 mb-6">
           <input
             type="text"
             placeholder="Enter project ID (e.g. 1071)"
             value={projectId}
             onChange={(e) => setProjectId(e.target.value)}
-            style={{
-              padding: "12px",
-              flex: 1,
-              borderRadius: "10px",
-              border: "1px solid #ddd",
-              fontSize: "16px",
-            }}
+            className="flex-1 p-3 rounded-lg border border-gray-300 text-base focus:outline-none focus:ring-2 focus:ring-green-500"
           />
 
           <button
             onClick={startIngestion}
-            style={{
-              padding: "12px 20px",
-              borderRadius: "10px",
-              background: "#16a34a",
-              color: "white",
-              border: "none",
-              fontWeight: "bold",
-              cursor: "pointer",
-            }}
+            className="px-5 py-3 rounded-lg bg-green-600 text-white font-semibold hover:bg-green-700 transition"
           >
             Evaluate
           </button>
         </div>
 
         {/* STATUS */}
-        <div style={{ marginBottom: "10px" }}>
+        <div className="mb-4 text-sm">
           <strong>Status:</strong>{" "}
           <span
-            style={{
-              color:
-                status === "running"
-                  ? "#f59e0b"
-                  : status === "done"
-                    ? "#16a34a"
-                    : status === "failed"
-                      ? "#dc2626"
-                      : "#555",
-            }}
+            className={`font-medium ${
+              status === "running"
+                ? "text-yellow-600"
+                : status === "done"
+                  ? "text-green-600"
+                  : status === "failed"
+                    ? "text-red-600"
+                    : "text-gray-500"
+            }`}
           >
             {status}
           </span>
         </div>
 
-        <div style={{ marginBottom: "15px" }}>
-          <strong>Current Step:</strong> {step}
+        <div className="mb-5 text-sm text-gray-700">
+          <strong>Current:</strong> {step}
         </div>
 
         {/* PROGRESS BAR */}
-        <div
-          style={{
-            height: "12px",
-            background: "#eee",
-            borderRadius: "10px",
-            overflow: "hidden",
-            marginBottom: "25px",
-          }}
-        >
+        <div className="h-2 bg-gray-200 rounded-full overflow-hidden mb-6">
           <div
-            style={{
-              width: `${progressPercent}%`,
-              height: "100%",
-              background: "linear-gradient(90deg, #16a34a, #22c55e)",
-              transition: "width 0.4s ease",
-            }}
+            className="h-full bg-gradient-to-r from-green-600 to-green-400 transition-all duration-500"
+            style={{ width: `${progressPercent}%` }}
           />
         </div>
 
         {/* TIMELINE */}
-        <div>
-          <h4 style={{ marginBottom: "10px" }}>📊 Progress Timeline</h4>
+        <div className="mb-6">
+          <h4 className="mb-2 font-semibold text-gray-700">Progress</h4>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+          <div className="flex flex-col gap-2 max-h-64 overflow-auto pr-1">
             {history.map((h, index) => (
               <div
                 key={index}
-                style={{
-                  padding: "10px",
-                  borderRadius: "8px",
-                  background:
-                    index === history.length - 1 ? "#dcfce7" : "#f1f5f9",
-                  border:
-                    index === history.length - 1
-                      ? "1px solid #16a34a"
-                      : "1px solid #e5e7eb",
-                  fontSize: "14px",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "8px",
-                }}
+                className={`px-3 py-2 rounded-md text-sm flex items-center gap-2 ${
+                  index === history.length - 1
+                    ? "bg-green-100 text-green-800"
+                    : "bg-gray-100 text-gray-700"
+                }`}
               >
                 {index === history.length - 1 ? "⏳" : "✔"} {h}
               </div>
@@ -215,34 +166,38 @@ export default function Home() {
           </div>
         </div>
 
-        {/* FINAL */}
+        {/* FINAL STATUS */}
         {status === "done" && (
-          <div
-            style={{
-              marginTop: "20px",
-              padding: "12px",
-              background: "#dcfce7",
-              borderRadius: "8px",
-              color: "#166534",
-              fontWeight: "bold",
-            }}
-          >
-            ✅ Completed successfully!
+          <div className="mt-4 p-4 bg-green-100 rounded-lg text-green-800 font-semibold text-sm">
+            ✅ Analysis completed successfully
           </div>
         )}
 
         {status === "failed" && (
-          <div
-            style={{
-              marginTop: "20px",
-              padding: "12px",
-              background: "#fee2e2",
-              borderRadius: "8px",
-              color: "#991b1b",
-              fontWeight: "bold",
-            }}
-          >
+          <div className="mt-4 p-4 bg-red-100 rounded-lg text-red-800 font-semibold text-sm">
             ❌ Failed. Check backend logs.
+          </div>
+        )}
+
+        {/* RESULT CARD */}
+        {score && (
+          <div className="mt-6 p-5 bg-blue-50 rounded-xl border border-blue-100">
+            <h3 className="font-semibold text-gray-800 mb-2">
+              📊 Project Score
+            </h3>
+
+            <div className="text-3xl font-bold text-blue-700 mb-3">
+              {Math.round(score.final_score * 100)}%
+            </div>
+
+            {/* 🔗 Verra Link */}
+            <a
+              href={verraLink}
+              target="_blank"
+              className="inline-block text-sm text-blue-600 hover:underline"
+            >
+              🔗 View on Verra Registry →
+            </a>
           </div>
         )}
       </div>
