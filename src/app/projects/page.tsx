@@ -42,15 +42,18 @@ export default function ProjectsPage() {
       setLoading(true);
 
       try {
-        if (tab === "verra") {
-          const res = await fetch("http://localhost:8000/projects/verra");
-          const json = await res.json();
-          setData(json);
-        } else {
-          setData([]); // GS empty for now
-        }
+        const endpoint =
+          tab === "verra"
+            ? "http://localhost:8000/projects/verra"
+            : "http://localhost:8000/projects/gs";
+
+        const res = await fetch(endpoint);
+        const json = await res.json();
+
+        setData(json);
       } catch (e) {
         console.error("Fetch failed", e);
+        setData([]);
       } finally {
         setLoading(false);
       }
@@ -116,7 +119,10 @@ export default function ProjectsPage() {
           ) : (
             <div className="divide-y">
               {data.map((p) => (
-                <Link key={p.id} href={`/verra/${p.id}`}>
+                <Link
+                  key={p.id}
+                  href={`/${tab}/${p.id}`} // 🔥 dynamic routing
+                >
                   <div className="grid grid-cols-5 px-6 py-4 items-center hover:bg-indigo-50 transition cursor-pointer">
                     {/* ID */}
                     <div className="font-mono text-xs text-indigo-600">
