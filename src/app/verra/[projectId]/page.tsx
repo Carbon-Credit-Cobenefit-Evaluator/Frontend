@@ -23,7 +23,7 @@ function Map({ lat, lon }: { lat: number; lon: number }) {
   );
 }
 
-/* ================= SCORE SECTION (UPDATED ONLY) ================= */
+/* ================= SCORE SECTION ================= */
 function ScoreSection({ data }: { data: any }) {
   if (!data) return null;
 
@@ -36,14 +36,11 @@ function ScoreSection({ data }: { data: any }) {
 
   return (
     <div className="space-y-6">
-      {/* HEADER */}
       <div className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 text-white px-6 py-4 rounded-xl font-bold text-lg shadow">
         Impact Score Overview
       </div>
 
-      {/* MAIN GRID */}
       <div className="grid lg:grid-cols-3 gap-6">
-        {/* BIG SCORE */}
         <div className="bg-gradient-to-br from-indigo-600 to-purple-600 text-white rounded-2xl p-8 shadow-lg flex flex-col justify-center">
           <div className="text-sm opacity-80">Final Score</div>
           <div className="text-5xl font-extrabold mt-2">{finalScore}%</div>
@@ -55,7 +52,6 @@ function ScoreSection({ data }: { data: any }) {
           </div>
         </div>
 
-        {/* RADAR */}
         <div className="lg:col-span-2 bg-white rounded-2xl border shadow-sm p-6 h-[300px]">
           <div className="text-sm font-semibold text-slate-700 mb-2">
             SDG Distribution
@@ -71,7 +67,6 @@ function ScoreSection({ data }: { data: any }) {
         </div>
       </div>
 
-      {/* MINIMAL SDG GRID */}
       <div className="bg-white rounded-2xl border shadow-sm p-6">
         <div className="text-sm font-semibold text-slate-700 mb-4">
           SDG Breakdown
@@ -218,7 +213,6 @@ function SDGSection({ data }: { data: any }) {
 }
 
 /* ================= MAIN PAGE ================= */
-
 export default function VerraProjectPage() {
   const { projectId } = useParams<{ projectId: string }>();
 
@@ -234,20 +228,28 @@ export default function VerraProjectPage() {
 
     async function load() {
       try {
-        const [metaRes, sdgRes, scoreRes] = await Promise.all([
+        const [metaRes, urlRes, scoreRes] = await Promise.all([
           fetch(`http://localhost:8000/project/${projectId}`),
-          fetch(`http://localhost:8000/project/${projectId}/llm`),
+          fetch(`http://localhost:8000/project/${projectId}/llm-url`),
           fetch(`http://localhost:8000/project/${projectId}/score`),
         ]);
 
         if (!metaRes.ok) throw new Error("Meta fetch failed");
 
         const metaJson = await metaRes.json();
-        const sdgJson = sdgRes.ok ? await sdgRes.json() : null;
-        const scoreJson = scoreRes.ok ? await scoreRes.json() : null;
-
         setMeta(metaJson || null);
-        setSdgData(sdgJson || null);
+
+        // 🔥 FETCH LLM FROM S3
+        if (urlRes.ok) {
+          const { url } = await urlRes.json();
+          const s3Res = await fetch(url);
+          const s3Json = await s3Res.json();
+          setSdgData(s3Json);
+        } else {
+          setSdgData(null);
+        }
+
+        const scoreJson = scoreRes.ok ? await scoreRes.json() : null;
         setScoreData(scoreJson || null);
       } catch (err) {
         console.error("LOAD ERROR:", err);
@@ -265,7 +267,6 @@ export default function VerraProjectPage() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-slate-50 to-indigo-50 p-8">
       <div className="max-w-6xl mx-auto space-y-8">
-        {/* HERO */}
         <div className="bg-white rounded-2xl border shadow-sm p-6 space-y-6">
           <div className="flex items-center justify-between flex-wrap gap-4">
             <div>
@@ -329,10 +330,7 @@ export default function VerraProjectPage() {
           </div>
         </div>
 
-        {/* SCORE */}
         <ScoreSection data={scoreData} />
-
-        {/* SDG DETAILS */}
         <SDGSection data={sdgData} />
       </div>
     </main>

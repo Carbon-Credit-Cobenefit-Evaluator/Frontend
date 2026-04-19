@@ -28,33 +28,25 @@ function normalizeMeta(meta: any) {
   return {
     project_name: meta.project_name,
     description: meta.description,
-
     latitude: meta.latitude,
     longitude: meta.longitude,
-
     state_province: meta.state || meta.country,
     project_status: meta.project_status,
-
     annual_emission_reduction: meta.annual_credits,
-
     registration_date: meta.crediting_start_date,
     crediting_period: meta.crediting_end_date,
   };
 }
 
-/* ================= SCORE SECTION (FIXED) ================= */
+/* ================= SCORE SECTION ================= */
 function ScoreSection({ data }: { data: any }) {
   if (!data) return null;
 
   const finalScore = (data.final_score * 100).toFixed(1);
 
-  // 🔥 FIXED: safe + visible values
   const sdgArray = Object.entries(data.sdgs || {}).map(([sdg, value]: any) => ({
     sdg: `SDG ${sdg}`,
-    score: Math.max(
-      Number(((value.score || 0) * 100).toFixed(1)),
-      2, // ensures visibility
-    ),
+    score: Math.max(Number(((value.score || 0) * 100).toFixed(1)), 2),
   }));
 
   return (
@@ -64,7 +56,6 @@ function ScoreSection({ data }: { data: any }) {
       </div>
 
       <div className="grid lg:grid-cols-3 gap-6">
-        {/* SCORE CARD */}
         <div className="bg-gradient-to-br from-indigo-600 to-purple-600 text-white rounded-2xl p-8 shadow-lg flex flex-col justify-center">
           <div className="text-sm opacity-80">Final Score</div>
           <div className="text-5xl font-extrabold mt-2">{finalScore}%</div>
@@ -76,7 +67,6 @@ function ScoreSection({ data }: { data: any }) {
           </div>
         </div>
 
-        {/* 🔥 FIXED RADAR */}
         <div className="lg:col-span-2 bg-white rounded-2xl border shadow-sm p-6 h-[300px]">
           <div className="text-sm font-semibold text-slate-700 mb-2">
             SDG Distribution
@@ -88,8 +78,8 @@ function ScoreSection({ data }: { data: any }) {
               <PolarAngleAxis dataKey="sdg" />
               <Radar
                 dataKey="score"
-                stroke="#6366f1" // 🔥 CRITICAL FIX
-                fill="#6366f1" // 🔥 CRITICAL FIX
+                stroke="#6366f1"
+                fill="#6366f1"
                 fillOpacity={0.6}
               />
             </RadarChart>
@@ -97,7 +87,6 @@ function ScoreSection({ data }: { data: any }) {
         </div>
       </div>
 
-      {/* SDG GRID */}
       <div className="bg-white rounded-2xl border shadow-sm p-6">
         <div className="text-sm font-semibold text-slate-700 mb-4">
           SDG Breakdown
@@ -247,16 +236,25 @@ export default function GSProjectPage() {
 
     async function load() {
       try {
-        const [metaRes, sdgRes, scoreRes] = await Promise.all([
+        const [metaRes, urlRes, scoreRes] = await Promise.all([
           fetch(`http://localhost:8000/project/${projectId}`),
-          fetch(`http://localhost:8000/project/${projectId}/llm`),
+          fetch(`http://localhost:8000/project/${projectId}/llm-url`), // 🔥 NEW
           fetch(`http://localhost:8000/project/${projectId}/score`),
         ]);
 
         const rawMeta = await metaRes.json();
         setMeta(normalizeMeta(rawMeta));
 
-        setSdgData(sdgRes.ok ? await sdgRes.json() : null);
+        // 🔥 FETCH FROM S3
+        if (urlRes.ok) {
+          const { url } = await urlRes.json();
+          const s3Res = await fetch(url);
+          const s3Json = await s3Res.json();
+          setSdgData(s3Json);
+        } else {
+          setSdgData(null);
+        }
+
         setScoreData(scoreRes.ok ? await scoreRes.json() : null);
       } catch (e) {
         console.error(e);
