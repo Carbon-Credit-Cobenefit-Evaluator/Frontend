@@ -3,12 +3,30 @@
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import {
-  RadarChart,
-  PolarGrid,
-  PolarAngleAxis,
-  Radar,
+  PieChart,
+  Pie,
+  Cell,
+  Tooltip,
   ResponsiveContainer,
+  Legend,
 } from "recharts";
+const SDG_COLORS: Record<number, string> = {
+  1: "#E5243B",
+  2: "#DDA63A",
+  3: "#4C9F38",
+  4: "#C5192D",
+  5: "#FF3A21",
+  6: "#26BDE2",
+  7: "#FCC30B",
+  8: "#A21942",
+  9: "#FD6925",
+  10: "#DD1367",
+  11: "#FD9D24",
+  12: "#BF8B2E",
+  13: "#3F7E44",
+  14: "#0A97D9",
+  15: "#56C02B",
+};
 
 /* ================= ENV ================= */
 const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL as string;
@@ -59,17 +77,43 @@ function ScoreSection({ data }: { data: any }) {
           </div>
         </div>
 
-        <div className="lg:col-span-2 bg-white rounded-2xl border shadow-sm p-6 h-[300px]">
-          <div className="text-sm font-semibold text-slate-700 mb-2">
-            SDG Distribution
-          </div>
+        <div className="lg:col-span-2 bg-white rounded-2xl border shadow-sm  h-[300px]">
+       
 
           <ResponsiveContainer width="100%" height="100%">
-            <RadarChart data={sdgArray}>
-              <PolarGrid />
-              <PolarAngleAxis dataKey="sdg" />
-              <Radar dataKey="score" fillOpacity={0.6} />
-            </RadarChart>
+            <PieChart>
+              <text
+                x="50%"
+                y="50%"
+                textAnchor="middle"
+                dominantBaseline="middle"
+                className="text-lg font-bold fill-slate-700"
+              >
+                SDGs
+              </text>
+              <Pie
+                data={sdgArray}
+                dataKey="score"
+                nameKey="sdg"
+                innerRadius={70}
+                outerRadius={110}
+                paddingAngle={2}
+                label={({ percent, payload }: any) => {
+                  if (percent < 0.05) return "";
+                  return payload.sdg;
+                }}
+              >
+                {sdgArray.map((entry: any, i: number) => {
+                  const sdgNumber = parseInt(entry.sdg.replace("SDG ", ""));
+                  return (
+                    <Cell key={i} fill={SDG_COLORS[sdgNumber] || "#8884d8"} />
+                  );
+                })}
+              </Pie>
+
+              <Tooltip formatter={(v: any) => `${v}%`} />
+              
+            </PieChart>
           </ResponsiveContainer>
         </div>
       </div>
@@ -147,13 +191,29 @@ function SDGSection({ data }: { data: any }) {
                     </div>
                   </div>
 
-                  <div>
-                    <div className="text-xs font-semibold text-slate-500 uppercase">
-                      Indicator
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <div className="text-xs font-semibold text-slate-500 uppercase">
+                        Indicator
+                      </div>
+                      <div className="text-sm font-medium text-indigo-700">
+                        {item?.indicator || "No indicator"}
+                      </div>
                     </div>
-                    <div className="text-sm font-medium text-indigo-700">
-                      {item?.indicator || "No indicator"}
-                    </div>
+
+                    {/* 🎯 SCORE CIRCLE */}
+                    {item?.score > 0 && (
+                      <div
+                        className={`w-8 h-8 flex items-center justify-center rounded-full text-xs font-bold shadow
+        ${
+          item.score === 2
+            ? "bg-yellow-400 text-white"
+            : "bg-gray-400 text-white"
+        }`}
+                      >
+                        {item.score}
+                      </div>
+                    )}
                   </div>
 
                   <div className="bg-gradient-to-r from-indigo-50 to-purple-50 border p-5 rounded-xl">
@@ -161,7 +221,7 @@ function SDGSection({ data }: { data: any }) {
                       Insight Summary
                     </div>
                     <div className="text-sm text-slate-800">
-                      💡 {item?.summary || "No summary available"}
+                      {item?.summary || "No summary available"}
                     </div>
                   </div>
 
