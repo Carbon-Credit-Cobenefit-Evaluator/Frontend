@@ -8,6 +8,7 @@ const NAV_ITEMS = [
   { label: "Platform", href: "/platform" },
   { label: "Projects", href: "/projects" },
   { label: "Insights", href: "/insights" },
+  {label: "Methodology", href: "/methodology"},
 ];
 
 export default function Navbar() {

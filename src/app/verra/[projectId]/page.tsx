@@ -10,6 +10,13 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+/* ================= ENV ================= */
+const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL as string;
+
+if (!BASE_URL) {
+  throw new Error("NEXT_PUBLIC_API_BASE_URL is not defined");
+}
+
 /* ================= SAFE MAP ================= */
 function Map({ lat, lon }: { lat: number; lon: number }) {
   if (!lat || !lon) return null;
@@ -212,7 +219,7 @@ function SDGSection({ data }: { data: any }) {
   );
 }
 
-/* ================= MAIN PAGE ================= */
+/* ================= MAIN ================= */
 export default function VerraProjectPage() {
   const { projectId } = useParams<{ projectId: string }>();
 
@@ -228,10 +235,12 @@ export default function VerraProjectPage() {
 
     async function load() {
       try {
+        console.log("BASE:", BASE_URL);
+
         const [metaRes, urlRes, scoreRes] = await Promise.all([
-          fetch(`http://localhost:8000/project/${projectId}`),
-          fetch(`http://localhost:8000/project/${projectId}/llm-url`),
-          fetch(`http://localhost:8000/project/${projectId}/score`),
+          fetch(`${BASE_URL}/project/${projectId}`),
+          fetch(`${BASE_URL}/project/${projectId}/llm-url`),
+          fetch(`${BASE_URL}/project/${projectId}/score`),
         ]);
 
         if (!metaRes.ok) throw new Error("Meta fetch failed");
@@ -239,7 +248,6 @@ export default function VerraProjectPage() {
         const metaJson = await metaRes.json();
         setMeta(metaJson || null);
 
-        // 🔥 FETCH LLM FROM S3
         if (urlRes.ok) {
           const { url } = await urlRes.json();
           const s3Res = await fetch(url);

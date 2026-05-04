@@ -2,6 +2,17 @@
 
 import { useState, useRef } from "react";
 
+/* ================= ENV ================= */
+const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL as string;
+
+if (!BASE_URL) {
+  throw new Error("NEXT_PUBLIC_API_BASE_URL is not defined");
+}
+
+/* 🔥 derive WS URL automatically */
+const WS_URL = BASE_URL.replace(/^http/, "ws");
+
+/* ================= MAIN ================= */
 export default function Home() {
   const [projectId, setProjectId] = useState("");
   const [source, setSource] = useState<"verra" | "gs">("verra");
@@ -24,7 +35,7 @@ export default function Home() {
     : "";
 
   // =========================================================
-  // 🔥 Dynamic registry link (FIXED GS LINK)
+  // 🔥 Dynamic registry link
   // =========================================================
   const projectLink =
     source === "verra"
@@ -32,22 +43,20 @@ export default function Home() {
       : `https://registry.goldstandard.org/projects/${projectId}`;
 
   // =========================================================
-  // 🔥 FETCH SCORE ONLY
+  // 🔥 FETCH SCORE
   // =========================================================
   const fetchResults = async () => {
     try {
-      const scoreRes = await fetch(
-        `http://localhost:8000/project/${fullProjectId}/score`,
-      );
-      const scoreData = await scoreRes.json();
-      setScore(scoreData);
+      const res = await fetch(`${BASE_URL}/project/${fullProjectId}/score`);
+      const data = await res.json();
+      setScore(data);
     } catch (e) {
       console.error("Fetch results failed", e);
     }
   };
 
   // =========================================================
-  // 🚀 START INGESTION (FIXED WS TIMING)
+  // 🚀 START INGESTION
   // =========================================================
   const startIngestion = async () => {
     if (!fullProjectId) return;
@@ -57,12 +66,12 @@ export default function Home() {
     setHistory(["Initializing..."]);
     setScore(null);
 
-    const ws = new WebSocket(`ws://localhost:8000/ws/${fullProjectId}`);
+    const ws = new WebSocket(`${WS_URL}/ws/${fullProjectId}`);
     wsRef.current = ws;
 
-    // 🔥 IMPORTANT: wait until WS connects BEFORE starting backend
+    // wait for WS connect
     ws.onopen = async () => {
-      await fetch(`http://localhost:8000/project/${fullProjectId}/start`, {
+      await fetch(`${BASE_URL}/project/${fullProjectId}/start`, {
         method: "POST",
       });
     };
@@ -93,7 +102,7 @@ export default function Home() {
           ws.close();
         }
       } catch (err) {
-        console.error("❌ WS parse error:", err);
+        console.error("WS parse error:", err);
       }
     };
 
@@ -119,20 +128,16 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-cyan-50 p-10 font-sans">
       <div className="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
-        {/* HEADER */}
         <h1 className="text-2xl font-bold mb-6 text-gray-800">
           🌱 Carbon Project Evaluator
         </h1>
 
-        {/* INPUT + DROPDOWN */}
+        {/* INPUT */}
         <div className="flex gap-3 mb-6">
-          {/* 🔥 SOURCE SELECT */}
           <select
             value={source}
             onChange={(e) => {
               setSource(e.target.value as "verra" | "gs");
-
-              // 🔥 reset state on switch
               setProjectId("");
               setHistory([]);
               setStep("");
@@ -145,7 +150,6 @@ export default function Home() {
             <option value="gs">GOLD STANDARD</option>
           </select>
 
-          {/* INPUT */}
           <input
             type="text"
             placeholder="Enter project ID (e.g. 1071)"
@@ -154,7 +158,6 @@ export default function Home() {
             className="flex-1 p-3 rounded-lg border border-gray-300 text-base focus:outline-none focus:ring-2 focus:ring-green-500"
           />
 
-          {/* BUTTON */}
           <button
             onClick={startIngestion}
             className="px-5 py-3 rounded-lg bg-green-600 text-white font-semibold hover:bg-green-700 transition"
@@ -237,7 +240,6 @@ export default function Home() {
               {Math.round(score.final_score * 100)}%
             </div>
 
-            {/* 🔗 DYNAMIC LINK */}
             <a
               href={projectLink}
               target="_blank"

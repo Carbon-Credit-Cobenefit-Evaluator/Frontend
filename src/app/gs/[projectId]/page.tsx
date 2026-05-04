@@ -10,6 +10,13 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+/* ✅ CENTRAL BASE URL */
+const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL as string;
+
+if (!BASE_URL) {
+  throw new Error("NEXT_PUBLIC_API_BASE_URL is not defined");
+}
+
 /* ================= SAFE MAP ================= */
 function Map({ lat, lon }: { lat: number; lon: number }) {
   if (!lat || !lon) return null;
@@ -236,16 +243,17 @@ export default function GSProjectPage() {
 
     async function load() {
       try {
+        console.log("BASE_URL:", BASE_URL); // debug once
+
         const [metaRes, urlRes, scoreRes] = await Promise.all([
-          fetch(`http://localhost:8000/project/${projectId}`),
-          fetch(`http://localhost:8000/project/${projectId}/llm-url`), // 🔥 NEW
-          fetch(`http://localhost:8000/project/${projectId}/score`),
+          fetch(`${BASE_URL}/project/${projectId}`),
+          fetch(`${BASE_URL}/project/${projectId}/llm-url`),
+          fetch(`${BASE_URL}/project/${projectId}/score`),
         ]);
 
         const rawMeta = await metaRes.json();
         setMeta(normalizeMeta(rawMeta));
 
-        // 🔥 FETCH FROM S3
         if (urlRes.ok) {
           const { url } = await urlRes.json();
           const s3Res = await fetch(url);
@@ -257,7 +265,7 @@ export default function GSProjectPage() {
 
         setScoreData(scoreRes.ok ? await scoreRes.json() : null);
       } catch (e) {
-        console.error(e);
+        console.error("Fetch error:", e);
       } finally {
         setLoading(false);
       }
