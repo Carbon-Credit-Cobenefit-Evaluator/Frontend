@@ -8,7 +8,7 @@ const NAV_ITEMS = [
   { label: "Platform", href: "/platform" },
   { label: "Projects", href: "/projects" },
   { label: "Insights", href: "/insights" },
-  {label: "Methodology", href: "/methodology"},
+  // {label: "Methodology", href: "/methodology"},
 ];
 
 export default function Navbar() {
@@ -81,22 +81,7 @@ export default function Navbar() {
               <span className="ml-2 text-white/70">→</span>
             </Link>
 
-            {/* user button */}
-            <button
-              className="grid h-10 w-10 place-items-center rounded-2xl border border-white/60 bg-white/70 shadow-sm backdrop-blur transition hover:bg-white"
-              aria-label="Account"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                className="h-4 w-4 text-slate-700"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Z" />
-                <path d="M20 21a8 8 0 1 0-16 0" />
-              </svg>
-            </button>
+           
           </div>
         </div>
 

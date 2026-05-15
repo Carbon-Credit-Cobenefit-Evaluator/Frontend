@@ -44,6 +44,10 @@ const COLORS = [
 
 export default function InsightsPage() {
   const [mounted, setMounted] = useState(false);
+
+  // ✅ NEW: sector toggle
+  const [sector, setSector] = useState<"forestry" | "renewable">("forestry");
+
   const [mapData, setMapData] = useState<any[]>([]);
   const [summary, setSummary] = useState<Summary | null>(null);
   const [distribution, setDistribution] = useState<DistributionItem[]>([]);
@@ -58,12 +62,12 @@ export default function InsightsPage() {
       try {
         const [summaryRes, distRes, sdgPieRes, sdgBarRes, scatterRes, mapRes] =
           await Promise.all([
-            fetch(`${BASE_URL}/insights/forestry/summary`),
-            fetch(`${BASE_URL}/insights/forestry/score-distribution`),
-            fetch(`${BASE_URL}/insights/forestry/sdg-distribution`),
-            fetch(`${BASE_URL}/insights/forestry/sdg-average`),
-            fetch(`${BASE_URL}/insights/forestry/emission-vs-score`),
-            fetch(`${BASE_URL}/insights/forestry/map`),
+            fetch(`${BASE_URL}/insights/${sector}/summary`),
+            fetch(`${BASE_URL}/insights/${sector}/score-distribution`),
+            fetch(`${BASE_URL}/insights/${sector}/sdg-distribution`),
+            fetch(`${BASE_URL}/insights/${sector}/sdg-average`),
+            fetch(`${BASE_URL}/insights/${sector}/emission-vs-score`),
+            fetch(`${BASE_URL}/insights/${sector}/map`),
           ]);
 
         setSummary(await summaryRes.json());
@@ -78,7 +82,7 @@ export default function InsightsPage() {
     };
 
     fetchAll();
-  }, []);
+  }, [sector]); // ✅ IMPORTANT: refetch when sector changes
 
   const sortedScatter = [...scatter]
     .filter((d) => d.emission <= 1500000)
@@ -90,11 +94,36 @@ export default function InsightsPage() {
         {/* HEADER */}
         <div className="space-y-2">
           <h1 className="text-4xl font-bold text-gray-800 tracking-tight">
-            🌳 Forestry Insights
+             {sector === "forestry" ? "Forestry" : "Renewable"} Insights
           </h1>
           <p className="text-gray-500 text-lg">
             Clean, data-driven sustainability analytics
           </p>
+
+          {/* ✅ NEW TOGGLE */}
+          <div className="flex gap-2 mt-4">
+            <button
+              onClick={() => setSector("forestry")}
+              className={`px-4 py-2 rounded-lg text-sm font-medium ${
+                sector === "forestry"
+                  ? "bg-indigo-600 text-white"
+                  : "bg-gray-200 text-gray-700"
+              }`}
+            >
+              Forestry 
+            </button>
+
+            <button
+              onClick={() => setSector("renewable")}
+              className={`px-4 py-2 rounded-lg text-sm font-medium ${
+                sector === "renewable"
+                  ? "bg-indigo-600 text-white"
+                  : "bg-gray-200 text-gray-700"
+              }`}
+            >
+              Renewable 
+            </button>
+          </div>
         </div>
 
         {/* KPI */}
@@ -141,10 +170,6 @@ export default function InsightsPage() {
                   innerRadius={80}
                   outerRadius={120}
                   paddingAngle={2}
-                  label={({ percent, payload }: any) => {
-                    if (percent < 0.05) return "";
-                    return `SDG ${payload.sdg}`;
-                  }}
                 >
                   {sdgPie.map((entry, i) => (
                     <Cell key={i} fill={SDG_COLORS[entry.sdg]} />
@@ -187,10 +212,10 @@ export default function InsightsPage() {
             )}
           </ChartCard>
 
-          {/* ✅ FIXED MAP */}
+          {/* MAP */}
           <ChartCard
             title="Geographical Distribution"
-            description="Location of forestry projects across the world."
+            description="Location of projects across the world."
             isMap
           >
             {mounted && <ProjectMap projects={mapData} />}

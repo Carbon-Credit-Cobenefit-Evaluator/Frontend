@@ -98,8 +98,7 @@ export default function ProjectsPage() {
   }, [data]);
 
   const filtered = useMemo(() => {
-    let result = [...data];
-
+  let result = data.filter((p) => p.score !== null && p.score !== undefined);
     // 🔍 Search by ID
     if (search) {
       result = result.filter((p) =>
