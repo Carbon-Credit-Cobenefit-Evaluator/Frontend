@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 const ITEMS = [
   {
     title: "Evidence-First",
@@ -17,7 +19,7 @@ const ITEMS = [
   },
 ];
 
-const ICONS: Record<string, JSX.Element> = {
+const ICONS: Record<string, ReactNode> = {
   "Evidence-First": (
     <svg viewBox="0 0 24 24" className="h-5 w-5">
       <path
@@ -30,6 +32,7 @@ const ICONS: Record<string, JSX.Element> = {
       />
     </svg>
   ),
+
   "Explainable Scoring": (
     <svg viewBox="0 0 24 24" className="h-5 w-5">
       <path
@@ -42,6 +45,7 @@ const ICONS: Record<string, JSX.Element> = {
       />
     </svg>
   ),
+
   "Registry-Agnostic": (
     <svg viewBox="0 0 24 24" className="h-5 w-5">
       <path
@@ -54,6 +58,7 @@ const ICONS: Record<string, JSX.Element> = {
       />
     </svg>
   ),
+
   "Audit-Friendly": (
     <svg viewBox="0 0 24 24" className="h-5 w-5">
       <path
@@ -70,7 +75,7 @@ const ICONS: Record<string, JSX.Element> = {
 
 export function TrustSection() {
   return (
-    <section className="relative border-t overflow-hidden">
+    <section className="relative overflow-hidden border-t">
       {/* soft bg to match hero theme */}
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-50 via-white to-emerald-50" />
       <div className="absolute inset-0 -z-10 opacity-80 bg-[linear-gradient(to_bottom_right,rgba(99,102,241,0.08),rgba(16,185,129,0.06),rgba(255,255,255,0))]" />
@@ -80,9 +85,11 @@ export function TrustSection() {
           <div className="text-xs font-extrabold tracking-wide text-slate-500">
             WHY TRUST THESE RATINGS
           </div>
+
           <h2 className="text-2xl font-extrabold text-slate-900">
             Built for transparency, not hype
           </h2>
+
           <p className="max-w-2xl text-sm text-slate-600">
             Our backend extracts sentences from registry documents, refines them
             for auditability, runs SDG rule classifiers, then applies a
@@ -100,13 +107,12 @@ export function TrustSection() {
                 <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-900 text-white shadow-sm">
                   {ICONS[item.title]}
                 </div>
-
-               
               </div>
 
               <h3 className="mt-4 text-base font-extrabold text-slate-900">
                 {item.title}
               </h3>
+
               <p className="mt-2 text-sm leading-relaxed text-slate-600">
                 {item.desc}
               </p>
@@ -115,11 +121,7 @@ export function TrustSection() {
             </div>
           ))}
         </div>
-
-        {/* small “pipeline” strip to match your real approach */}
-    
       </div>
     </section>
   );
 }
-
